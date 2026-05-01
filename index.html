@@ -3,864 +3,1018 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kait Mauro — Studio</title>
+<title>Studio Kait | Art by Kait Mauro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  :root {
-    --ink: #1a1714;
-    --parchment: #f5f0e8;
-    --warm-mid: #d4c9b5;
-    --sienna: #8b4c2f;
-    --amethyst: #6b4e8a;
-    --gold: #c4922a;
-    --muted: #7a7062;
-    --nav-w: 240px;
-  }
+:root {
+  --white: #ffffff;
+  --off-white: #faf9f7;
+  --cream: #f4f0e8;
+  --border: #e6e2da;
+  --text: #1c1a18;
+  --text-mid: #5a5650;
+  --text-light: #9a9690;
+  --accent: #b8622a;
+  --sidebar-w: 220px;
+}
 
-  html, body {
-    height: 100%;
-    background: var(--ink);
-    color: var(--parchment);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    overflow: hidden;
-  }
+html { font-size: 16px; }
+body {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  color: var(--text);
+  background: var(--white);
+  display: flex;
+  min-height: 100vh;
+}
 
-  /* ── LAYOUT ── */
-  .site-wrap {
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
-  }
+/* ──────────────────────────────────────
+   SIDEBAR
+────────────────────────────────────── */
+.sidebar {
+  width: var(--sidebar-w);
+  min-width: var(--sidebar-w);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--white);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 44px 0 36px;
+  z-index: 100;
+  overflow-y: auto;
+}
 
-  /* ── VERTICAL NAV ── */
-  nav.sidebar {
-    width: var(--nav-w);
-    min-width: var(--nav-w);
-    height: 100vh;
-    background: #110f0c;
-    border-right: 1px solid rgba(212,201,181,0.1);
-    display: flex;
-    flex-direction: column;
-    padding: 48px 0 36px;
-    position: relative;
-    z-index: 10;
-  }
+.sidebar-logo {
+  padding: 0 28px 36px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 28px;
+}
+.sidebar-logo a { text-decoration: none; }
+.sidebar-logo .wordmark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  line-height: 1.25;
+  display: block;
+}
+.sidebar-logo .sub {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-top: 6px;
+  display: block;
+}
 
-  .nav-logo {
-    padding: 0 32px;
-    margin-bottom: 56px;
-  }
-  .nav-logo .name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 300;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--parchment);
-    line-height: 1.2;
-  }
-  .nav-logo .tagline {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 6px;
-  }
+.sidebar-nav { flex: 1; }
+.sidebar-nav ul { list-style: none; }
 
-  nav ul {
-    list-style: none;
-    flex: 1;
-  }
-  nav ul li a {
-    display: block;
-    padding: 12px 32px;
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s, padding-left 0.2s;
-    position: relative;
-  }
-  nav ul li a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 1px;
-    background: var(--gold);
-    transition: width 0.25s ease;
-  }
-  nav ul li a:hover,
-  nav ul li a.active {
-    color: var(--parchment);
-    padding-left: 40px;
-  }
-  nav ul li a:hover::before,
-  nav ul li a.active::before {
-    width: 24px;
-  }
-  nav ul li a.active {
-    color: var(--parchment);
-  }
+.nav-group-label {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  padding: 22px 28px 7px;
+  display: block;
+}
 
-  .nav-footer {
-    padding: 0 32px;
-  }
-  .nav-footer p {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 10px;
-  }
-  .nav-footer .socials a {
-    display: inline-block;
-    font-size: 9px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    margin-right: 10px;
-    transition: color 0.2s;
-  }
-  .nav-footer .socials a:hover { color: var(--parchment); }
+.sidebar-nav ul li a {
+  display: block;
+  padding: 8px 28px;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: var(--text-mid);
+  text-decoration: none;
+  transition: color 0.15s;
+  position: relative;
+}
+.sidebar-nav ul li a:hover { color: var(--text); }
+.sidebar-nav ul li a.active { color: var(--text); font-weight: 400; }
+.sidebar-nav ul li a.active::before {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
 
-  /* ── MAIN CONTENT ── */
-  main {
-    flex: 1;
-    overflow-y: auto;
-    scroll-behavior: smooth;
-  }
+.sidebar-bottom {
+  padding: 24px 28px 0;
+  border-top: 1px solid var(--border);
+  margin-top: 12px;
+}
+.sidebar-bottom a {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--text-light);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+  transition: color 0.15s;
+}
+.sidebar-bottom a:hover { color: var(--text); }
 
-  /* ── HERO ── */
-  .hero {
-    height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-  }
+/* ──────────────────────────────────────
+   MAIN LAYOUT
+────────────────────────────────────── */
+.main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-height: 100vh;
+}
 
-  .hero-canvas {
-    position: absolute;
-    inset: 0;
-    background: #1a1714;
-  }
+/* ──────────────────────────────────────
+   HERO
+────────────────────────────────────── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  border-bottom: 1px solid var(--border);
+}
 
-  /* Abstract painted background made from SVG shapes */
-  .hero-canvas svg {
-    width: 100%;
-    height: 100%;
-  }
+.hero-left {
+  padding: 72px 64px 72px 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid var(--border);
+}
 
-  .hero-gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to top,
-      rgba(26,23,20,1) 0%,
-      rgba(26,23,20,0.7) 35%,
-      rgba(26,23,20,0.15) 70%,
-      rgba(26,23,20,0.05) 100%
-    );
-  }
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
 
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 0 72px 80px;
-    max-width: 720px;
-  }
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(42px, 5vw, 70px);
+  font-weight: 400;
+  line-height: 1.06;
+  color: var(--text);
+}
+.hero-title em { font-style: italic; font-weight: 300; }
 
-  .hero-eyebrow {
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 20px;
-  }
+.hero-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(52px, 7vw, 88px);
-    font-weight: 300;
-    line-height: 0.95;
-    color: var(--parchment);
-    margin-bottom: 28px;
-  }
-  .hero-title em {
-    font-style: italic;
-    color: var(--warm-mid);
-  }
+.hero-desc {
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--text-mid);
+  max-width: 380px;
+}
 
-  .hero-sub {
-    font-size: 14px;
-    line-height: 1.8;
-    color: #9e9389;
-    max-width: 440px;
-    margin-bottom: 40px;
-  }
+.hero-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.hero-links a {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 3px;
+  transition: border-color 0.15s, color 0.15s;
+}
+.hero-links a:hover { border-color: var(--accent); color: var(--accent); }
 
-  .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--parchment);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(212,201,181,0.3);
-    padding-bottom: 6px;
-    transition: border-color 0.2s, gap 0.2s;
-  }
-  .hero-cta:hover { gap: 22px; border-color: var(--gold); }
-  .hero-cta .arrow { color: var(--gold); }
+.hero-right {
+  position: relative;
+  overflow: hidden;
+  background: var(--cream);
+  min-height: 560px;
+}
+.hero-right svg { width: 100%; height: 100%; display: block; position: absolute; inset: 0; }
+.hero-caption {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  background: rgba(255,255,255,0.88);
+  padding: 7px 14px;
+}
 
-  .scroll-hint {
-    position: absolute;
-    bottom: 40px;
-    right: 60px;
-    writing-mode: vertical-rl;
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .scroll-hint::after {
-    content: '';
-    display: block;
-    width: 1px;
-    height: 48px;
-    background: linear-gradient(to bottom, var(--muted), transparent);
-  }
+/* ──────────────────────────────────────
+   ABOUT
+────────────────────────────────────── */
+.about {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  border-bottom: 1px solid var(--border);
+}
 
-  /* ── ABOUT SECTION ── */
-  .section-about {
-    padding: 120px 72px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-    border-top: 1px solid rgba(212,201,181,0.08);
-  }
+.about-left {
+  padding: 80px 64px 80px 72px;
+  border-right: 1px solid var(--border);
+}
 
-  .section-label {
-    font-size: 9px;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 32px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    max-width: 40px;
-    height: 1px;
-    background: var(--gold);
-    opacity: 0.5;
-  }
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 32px;
+  display: block;
+}
 
-  .about-heading {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 4vw, 52px);
-    font-weight: 300;
-    line-height: 1.1;
-    color: var(--parchment);
-    margin-bottom: 28px;
-  }
-  .about-heading em { font-style: italic; color: var(--warm-mid); }
+.about-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 54px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 36px;
+}
+.about-heading em { font-style: italic; font-weight: 300; }
 
-  .about-body {
-    font-size: 14px;
-    line-height: 1.9;
-    color: #9e9389;
-  }
-  .about-body p + p { margin-top: 18px; }
+.about-body {
+  font-size: 15px;
+  line-height: 1.95;
+  color: var(--text-mid);
+  max-width: 480px;
+}
+.about-body p + p { margin-top: 18px; }
 
-  .about-right { padding-top: 60px; }
+.text-link {
+  display: inline-block;
+  margin-top: 40px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--text);
+  padding-bottom: 3px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.text-link:hover { color: var(--accent); border-color: var(--accent); }
 
-  .about-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-style: italic;
-    font-weight: 300;
-    line-height: 1.55;
-    color: var(--warm-mid);
-    border-left: 2px solid var(--amethyst);
-    padding-left: 28px;
-    margin-bottom: 48px;
-  }
+.about-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.about-img {
+  flex: 1;
+  overflow: hidden;
+  background: var(--cream);
+}
+.about-img + .about-img { border-top: 1px solid var(--border); }
+.about-img svg { width: 100%; height: 100%; display: block; }
+.about-img.tall { min-height: 340px; }
+.about-img.short { min-height: 180px; }
 
-  .about-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 36px;
-  }
-  .tag {
-    font-size: 9px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    border: 1px solid rgba(212,201,181,0.15);
-    padding: 6px 14px;
-  }
+/* ──────────────────────────────────────
+   SECTION HEADER SHARED
+────────────────────────────────────── */
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 28px;
+  margin-bottom: 0;
+}
+.sec-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--text);
+}
+.sec-head a {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.sec-head a:hover { color: var(--text); }
 
-  /* ── WORK GRID ── */
-  .section-work {
-    padding: 0 72px 120px;
-  }
+/* ──────────────────────────────────────
+   COLLECTIONS
+────────────────────────────────────── */
+.collections {
+  padding: 80px 72px;
+  border-bottom: 1px solid var(--border);
+}
 
-  .work-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 48px;
-    padding-top: 80px;
-    border-top: 1px solid rgba(212,201,181,0.08);
-  }
+/* Top 3 grid */
+.coll-grid-top {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+  margin-top: 48px;
+}
+.coll-grid-top .coll-item { border-right: 1px solid var(--border); }
+.coll-grid-top .coll-item:last-child { border-right: none; }
 
-  .work-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 48px;
-    font-weight: 300;
-    color: var(--parchment);
-    line-height: 1;
-  }
+/* Bottom 3 grid */
+.coll-grid-bot {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  border: 1px solid var(--border);
+  border-top: none;
+}
+.coll-grid-bot .coll-item { border-right: 1px solid var(--border); }
+.coll-grid-bot .coll-item:last-child { border-right: none; }
+.coll-grid-bot .coll-item.wide { flex-direction: row; }
+.coll-grid-bot .coll-item.wide .coll-thumb { aspect-ratio: 1; min-width: 180px; flex-shrink: 0; }
+.coll-grid-bot .coll-item.wide .coll-info { border-top: none; border-left: 1px solid var(--border); }
 
-  .work-view-all {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .work-view-all:hover { color: var(--parchment); }
+.coll-item {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background: var(--white);
+  transition: background 0.18s;
+}
+.coll-item:hover { background: var(--off-white); }
 
-  .work-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: auto;
-    gap: 16px;
-  }
+.coll-thumb {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--cream);
+  flex-shrink: 0;
+}
+.coll-thumb svg { width: 100%; height: 100%; display: block; }
 
-  .work-item {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .work-item::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(26,23,20,0);
-    transition: background 0.3s;
-  }
-  .work-item:hover::after { background: rgba(26,23,20,0.35); }
+.coll-info {
+  padding: 24px 28px 32px;
+  border-top: 1px solid var(--border);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.coll-num {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+.coll-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 23px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.coll-desc {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--text-mid);
+  flex: 1;
+}
+.coll-arrow {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  transition: color 0.15s;
+}
+.coll-item:hover .coll-arrow { color: var(--accent); }
 
-  .work-item-1 { grid-column: 1 / 8; grid-row: 1; aspect-ratio: 4/3; }
-  .work-item-2 { grid-column: 8 / 13; grid-row: 1; aspect-ratio: 3/4; }
-  .work-item-3 { grid-column: 1 / 5; grid-row: 2; aspect-ratio: 1; }
-  .work-item-4 { grid-column: 5 / 9; grid-row: 2; aspect-ratio: 1; }
-  .work-item-5 { grid-column: 9 / 13; grid-row: 2; aspect-ratio: 1; }
+/* ──────────────────────────────────────
+   REVIEWS
+────────────────────────────────────── */
+.reviews {
+  background: var(--cream);
+  padding: 80px 72px;
+  border-bottom: 1px solid var(--border);
+}
 
-  .work-item .canvas-art {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px 80px;
+  margin-top: 56px;
+}
 
-  .work-item-label {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    background: linear-gradient(transparent, rgba(17,15,12,0.85));
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
-    z-index: 2;
-  }
-  .work-item:hover .work-item-label { transform: translateY(0); }
-  .work-item-label .item-series {
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 4px;
-  }
-  .work-item-label .item-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    font-weight: 300;
-    color: var(--parchment);
-  }
+.review {
+  padding-top: 28px;
+  border-top: 1px solid #d8d4cc;
+}
+.review-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 60px;
+  font-weight: 300;
+  line-height: 0.7;
+  color: #cdc8c0;
+  display: block;
+  margin-bottom: 16px;
+}
+.review-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.review-attr {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
 
-  /* ── TESTIMONIALS ── */
-  .section-words {
-    padding: 100px 72px;
-    background: #110f0c;
-    border-top: 1px solid rgba(212,201,181,0.08);
-    border-bottom: 1px solid rgba(212,201,181,0.08);
-  }
+/* ──────────────────────────────────────
+   BLOG
+────────────────────────────────────── */
+.blog {
+  padding: 80px 72px;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+}
 
-  .words-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin-top: 56px;
-  }
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border);
+  margin-top: 48px;
+}
+.blog-card {
+  text-decoration: none;
+  color: inherit;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  transition: background 0.18s;
+}
+.blog-card:last-child { border-right: none; }
+.blog-card:hover { background: var(--off-white); }
 
-  .word-card {
-    border-top: 1px solid rgba(212,201,181,0.12);
-    padding-top: 28px;
-  }
-  .word-card .quote-mark {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 48px;
-    font-weight: 300;
-    color: var(--amethyst);
-    line-height: 1;
-    margin-bottom: 12px;
-  }
-  .word-card blockquote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17px;
-    font-style: italic;
-    font-weight: 300;
-    line-height: 1.65;
-    color: var(--warm-mid);
-    margin-bottom: 20px;
-  }
-  .word-card cite {
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-style: normal;
-  }
+.blog-thumb {
+  aspect-ratio: 3/2;
+  background: var(--cream);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.blog-thumb svg { width: 100%; height: 100%; display: block; }
 
-  /* ── SHOP CTA ── */
-  .section-shop {
-    padding: 120px 72px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
+.blog-body {
+  padding: 28px 32px 36px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+}
+.blog-tag {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 14px;
+}
+.blog-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--text);
+  margin-bottom: 14px;
+  flex: 1;
+}
+.blog-excerpt {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--text-mid);
+  margin-bottom: 20px;
+}
+.blog-cta {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  transition: color 0.15s;
+}
+.blog-card:hover .blog-cta { color: var(--accent); }
 
-  .shop-text .section-label { margin-bottom: 24px; }
+/* ──────────────────────────────────────
+   NEWSLETTER CTA
+────────────────────────────────────── */
+.newsletter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+  min-height: 320px;
+}
+.newsletter-text {
+  padding: 72px 64px 72px 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid var(--border);
+}
+.nl-label {
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+.nl-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+.nl-heading em { font-style: italic; font-weight: 300; }
+.nl-desc {
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--text-mid);
+  max-width: 360px;
+  margin-bottom: 36px;
+}
+.nl-btn {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--text);
+  padding: 14px 30px;
+  text-decoration: none;
+  transition: background 0.18s;
+  align-self: flex-start;
+}
+.nl-btn:hover { background: var(--accent); }
 
-  .shop-heading {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(40px, 5vw, 64px);
-    font-weight: 300;
-    line-height: 1.05;
-    color: var(--parchment);
-    margin-bottom: 24px;
-  }
-  .shop-heading em { font-style: italic; color: var(--warm-mid); }
+.newsletter-img {
+  background: var(--cream);
+  overflow: hidden;
+  min-height: 320px;
+  position: relative;
+}
+.newsletter-img svg { width: 100%; height: 100%; display: block; position: absolute; inset: 0; }
 
-  .shop-desc {
-    font-size: 14px;
-    line-height: 1.85;
-    color: #9e9389;
-    margin-bottom: 40px;
-  }
-
-  .btn-group { display: flex; gap: 16px; flex-wrap: wrap; }
-
-  .btn-primary {
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--ink);
-    background: var(--parchment);
-    padding: 14px 28px;
-    text-decoration: none;
-    transition: background 0.2s, color 0.2s;
-  }
-  .btn-primary:hover { background: var(--gold); color: var(--ink); }
-
-  .btn-ghost {
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--parchment);
-    border: 1px solid rgba(212,201,181,0.25);
-    padding: 14px 28px;
-    text-decoration: none;
-    transition: border-color 0.2s;
-  }
-  .btn-ghost:hover { border-color: var(--parchment); }
-
-  .shop-visual {
-    position: relative;
-    height: 480px;
-    overflow: hidden;
-  }
-  .shop-visual svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    padding: 48px 72px;
-    border-top: 1px solid rgba(212,201,181,0.08);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  footer p {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  /* ── SCROLLBAR ── */
-  main::-webkit-scrollbar { width: 2px; }
-  main::-webkit-scrollbar-track { background: transparent; }
-  main::-webkit-scrollbar-thumb { background: rgba(212,201,181,0.2); }
+/* ──────────────────────────────────────
+   FOOTER
+────────────────────────────────────── */
+footer {
+  padding: 36px 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+footer p { font-size: 11px; letter-spacing: 0.08em; color: var(--text-light); }
+.footer-nav { display: flex; gap: 24px; }
+.footer-nav a {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-nav a:hover { color: var(--text); }
 </style>
 </head>
 <body>
 
-<div class="site-wrap">
+<!-- ═══════════════════════════════════════
+     SIDEBAR
+═══════════════════════════════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <a href="#">
+      <span class="wordmark">Kait Mauro</span>
+      <span class="sub">Studio &amp; Art</span>
+    </a>
+  </div>
 
-  <!-- VERTICAL NAVIGATION -->
-  <nav class="sidebar">
-    <div class="nav-logo">
-      <div class="name">Kait<br>Mauro</div>
-      <div class="tagline">Studio &amp; Art</div>
-    </div>
-
+  <nav class="sidebar-nav">
     <ul>
       <li><a href="#" class="active">Home</a></li>
-      <li><a href="#">Paintings</a></li>
-      <li><a href="#">Film Prints</a></li>
-      <li><a href="#">Wearable Art</a></li>
-      <li><a href="#">Originals</a></li>
-      <li><a href="#">Experiments</a></li>
-      <li><a href="#">Journal</a></li>
+      <li><a href="#">Art Mail</a></li>
+
+      <div class="nav-group-label">Info</div>
       <li><a href="#">About</a></li>
       <li><a href="#">Contact</a></li>
-    </ul>
 
-    <div class="nav-footer">
-      <p>Follow</p>
-      <div class="socials">
-        <a href="#">Instagram</a>
-        <a href="#">Substack</a>
-      </div>
-    </div>
+      <div class="nav-group-label">Artwork</div>
+      <li><a href="#">Originals</a></li>
+      <li><a href="#">Photographs</a></li>
+      <li><a href="#">Art Prints</a></li>
+      <li><a href="#">Wearable Art</a></li>
+      <li><a href="#">Experiments</a></li>
+
+      <div class="nav-group-label">Writing</div>
+      <li><a href="#">Blog / Substack</a></li>
+    </ul>
   </nav>
 
-  <!-- MAIN SCROLL AREA -->
-  <main>
+  <div class="sidebar-bottom">
+    <a href="#">Instagram →</a>
+    <a href="#">Substack →</a>
+    <a href="#">Cart (0)</a>
+  </div>
+</aside>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-canvas">
-        <!-- Abstract painted backdrop -->
-        <svg viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <rect width="1000" height="800" fill="#1a1714"/>
-          <!-- Large amethyst wash -->
-          <ellipse cx="700" cy="280" rx="380" ry="340" fill="#3d2855" opacity="0.55"/>
-          <!-- Sienna warm bloom -->
-          <ellipse cx="820" cy="500" rx="260" ry="200" fill="#7a3520" opacity="0.45"/>
-          <!-- Gold accent streak -->
-          <path d="M500 100 Q700 300 900 200 Q1000 150 1000 200 L1000 800 L0 800 L0 600 Q300 500 500 100Z" fill="#c4922a" opacity="0.06"/>
-          <!-- Mid purple layer -->
-          <ellipse cx="600" cy="180" rx="220" ry="180" fill="#5e3d7a" opacity="0.35"/>
-          <!-- Dark bloom left -->
-          <ellipse cx="150" cy="400" rx="200" ry="300" fill="#110f0c" opacity="0.7"/>
-          <!-- Texture marks — abstract paint strokes -->
-          <path d="M580 80 Q650 140 620 200 Q590 260 640 310" stroke="#c4922a" stroke-width="1.5" fill="none" opacity="0.3"/>
-          <path d="M700 150 Q780 180 760 250 Q740 310 800 340" stroke="#f5f0e8" stroke-width="0.8" fill="none" opacity="0.18"/>
-          <path d="M640 300 Q700 320 720 380 Q740 440 700 480" stroke="#c4922a" stroke-width="1" fill="none" opacity="0.25"/>
-          <!-- Ink drips -->
-          <circle cx="760" cy="230" r="4" fill="#c4922a" opacity="0.5"/>
-          <circle cx="830" cy="310" r="2.5" fill="#f5f0e8" opacity="0.3"/>
-          <circle cx="700" cy="410" r="3" fill="#6b4e8a" opacity="0.6"/>
-          <circle cx="660" cy="160" r="5" fill="#8b4c2f" opacity="0.4"/>
-          <!-- Gold foil texture lines -->
-          <path d="M680 200 Q700 220 690 250" stroke="#d4a840" stroke-width="0.5" fill="none" opacity="0.6"/>
-          <path d="M720 260 Q740 280 730 310" stroke="#d4a840" stroke-width="0.5" fill="none" opacity="0.5"/>
-          <path d="M780 180 Q810 210 800 250" stroke="#d4a840" stroke-width="0.5" fill="none" opacity="0.4"/>
+<!-- ═══════════════════════════════════════
+     MAIN
+═══════════════════════════════════════ -->
+<main class="main">
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Abstract Painter · Poet · Writer</p>
+
+      <h1 class="hero-title">
+        Kait Mauro is<br>
+        an artist, writer,<br>
+        and <em>poet.</em><br>
+        Her work attends<br>
+        to memory, trace,<br>
+        and what persists.
+      </h1>
+
+      <div class="hero-foot">
+        <p class="hero-desc">Bold, beautifully textured paintings that invite a deeper feeling into both the light and the darkness inherent in being human.</p>
+        <div class="hero-links">
+          <a href="#">Originals</a>
+          <a href="#">Prints</a>
+          <a href="#">Film Photographs</a>
+          <a href="#">Wearable Art</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <!-- Abstract painting art — warm ochres and amethyst, Kait's actual palette -->
+      <svg viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="800" fill="#ddd5c4"/>
+        <ellipse cx="320" cy="320" rx="270" ry="310" fill="#c4a882" opacity="0.5"/>
+        <ellipse cx="200" cy="480" rx="210" ry="250" fill="#b8906a" opacity="0.4"/>
+        <ellipse cx="430" cy="180" rx="190" ry="170" fill="#cdbba0" opacity="0.45"/>
+        <ellipse cx="300" cy="660" rx="230" ry="170" fill="#a87d5e" opacity="0.28"/>
+        <ellipse cx="450" cy="560" rx="150" ry="140" fill="#7a5a8a" opacity="0.1"/>
+        <path d="M230 120 Q290 210 275 370 Q260 510 310 620" stroke="#8a6040" stroke-width="2.5" fill="none" opacity="0.3" stroke-linecap="round"/>
+        <path d="M370 90 Q430 190 410 360 Q390 500 440 590" stroke="#7a5035" stroke-width="1.5" fill="none" opacity="0.22" stroke-linecap="round"/>
+        <path d="M170 410 Q230 450 220 540" stroke="#9a7055" stroke-width="1.5" fill="none" opacity="0.28" stroke-linecap="round"/>
+        <!-- gold ink drips — the signature of the Amethyst Collection -->
+        <path d="M290 190 Q315 260 305 360 Q295 450 315 540" stroke="#c4922a" stroke-width="2" fill="none" opacity="0.58" stroke-linecap="round"/>
+        <path d="M370 270 Q395 340 385 430" stroke="#c4922a" stroke-width="1.2" fill="none" opacity="0.45" stroke-linecap="round"/>
+        <circle cx="307" cy="358" r="5.5" fill="#c4922a" opacity="0.7"/>
+        <circle cx="384" cy="430" r="3.5" fill="#c4922a" opacity="0.58"/>
+        <circle cx="220" cy="542" r="4" fill="#b8802a" opacity="0.5"/>
+        <circle cx="312" cy="540" r="3" fill="#d4a840" opacity="0.55"/>
+        <!-- light blush -->
+        <ellipse cx="140" cy="200" rx="85" ry="110" fill="#ece5d8" opacity="0.32"/>
+      </svg>
+      <span class="hero-caption">Amethyst Collection</span>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section class="about">
+    <div class="about-left">
+      <span class="section-label">The Artist</span>
+      <h2 class="about-heading">A radically<br><em>self-sharing</em><br>creator.</h2>
+      <div class="about-body">
+        <p>I write when there are words to express what I need to say, and use the visual language I've constructed for myself when there are not.</p>
+        <p>I'm an abstract painter, a radically self-sharing writer, and a hot mess poetess in Birmingham, Alabama. I live with my five dogs, a hoarder-level collection of houseplants, piles of books, and way too many art supplies.</p>
+        <p>My current exploration is the Amethyst Collection — abstract pieces incorporating inks made from amethyst stones. I love the meditative quality of making these pieces, tilting the paper slowly and disturbing the inks to create intricate layers of gold-foiled texture.</p>
+        <p>My artistic practices play a significant role in my healing from complex PTSD. I am my favorite version of myself when working on one of my creative projects.</p>
+      </div>
+      <a href="#" class="text-link">Read More About Kait →</a>
+    </div>
+
+    <div class="about-right">
+      <div class="about-img tall">
+        <svg viewBox="0 0 380 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="380" height="420" fill="#e8e0d4"/>
+          <ellipse cx="190" cy="200" rx="160" ry="200" fill="#c4a882" opacity="0.55"/>
+          <ellipse cx="220" cy="160" rx="120" ry="140" fill="#b8906a" opacity="0.48"/>
+          <ellipse cx="155" cy="290" rx="95" ry="110" fill="#a87d5e" opacity="0.38"/>
+          <path d="M165 70 Q195 150 185 250 Q175 340 195 400" stroke="#c4922a" stroke-width="2.2" fill="none" opacity="0.55" stroke-linecap="round"/>
+          <circle cx="186" cy="248" r="6" fill="#c4922a" opacity="0.68"/>
+          <circle cx="196" cy="400" r="4" fill="#b8802a" opacity="0.5"/>
+          <ellipse cx="265" cy="330" rx="65" ry="55" fill="#7a5a8a" opacity="0.1"/>
+          <path d="M240 100 Q265 170 255 260" stroke="#8a6040" stroke-width="1.2" fill="none" opacity="0.28" stroke-linecap="round"/>
         </svg>
       </div>
-      <div class="hero-gradient"></div>
-
-      <div class="hero-content">
-        <p class="hero-eyebrow">Abstract Painter · Poet · Birmingham, Alabama</p>
-        <h1 class="hero-title">Art that<br><em>feels its way</em><br>into being</h1>
-        <p class="hero-sub">Bold, textured paintings that invite a deeper feeling into both the light and the darkness inherent in being human.</p>
-        <a href="#" class="hero-cta">Explore the work <span class="arrow">→</span></a>
-      </div>
-
-      <div class="scroll-hint">Scroll</div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="section-about">
-      <div class="about-left">
-        <div class="section-label">The Artist</div>
-        <h2 class="about-heading">A radically<br><em>self-sharing</em><br>creator</h2>
-        <div class="about-body">
-          <p>I write when there are words to express what I need to say, and use the visual language I've constructed for myself when there are not.</p>
-          <p>I'm an abstract painter, a radically self-sharing writer, and a hot mess poetess living in Birmingham, Alabama — surrounded by five dogs, a hoarder-level collection of houseplants, piles of books, and way too many art supplies.</p>
-          <p>My current exploration is the Amethyst Collection, where I create abstract pieces incorporating inks made from amethyst stones. I love the meditative quality of making these pieces — tilting the paper slowly and disturbing the inks to create intricate layers of gold-foiled texture.</p>
-        </div>
-        <div class="about-tags">
-          <span class="tag">Abstract Painting</span>
-          <span class="tag">Film Photography</span>
-          <span class="tag">Wearable Art</span>
-          <span class="tag">Poetry</span>
-          <span class="tag">Substack</span>
-        </div>
-      </div>
-      <div class="about-right">
-        <div class="about-quote">
-          "Kait's work carries a piece of their soul, raw and refined in equal measure. Through abstracted landscapes — shape, color, texture — they offer something that is felt as deeply as it is seen."
-        </div>
-        <!-- Abstract portrait placeholder — amethyst ink art -->
-        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;">
-          <rect width="400" height="400" fill="#1e1a17"/>
-          <ellipse cx="200" cy="170" rx="120" ry="160" fill="#2e1f42" opacity="0.8"/>
-          <ellipse cx="240" cy="140" rx="90" ry="120" fill="#4a3066" opacity="0.6"/>
-          <ellipse cx="180" cy="200" rx="70" ry="100" fill="#5e3d7a" opacity="0.5"/>
-          <path d="M140 80 Q200 60 260 100 Q310 140 280 220 Q250 300 200 320 Q150 340 120 280 Q90 220 110 150 Z" fill="none" stroke="#c4922a" stroke-width="1" opacity="0.4"/>
-          <path d="M170 120 Q210 100 240 140 Q265 175 250 220 Q235 265 200 270 Q165 275 145 240 Q125 205 140 165 Z" fill="#d4a840" opacity="0.08"/>
-          <!-- Gold ink drips -->
-          <path d="M195 80 Q198 100 194 120 Q190 140 196 160" stroke="#d4a840" stroke-width="1.5" fill="none" opacity="0.7" stroke-linecap="round"/>
-          <path d="M230 95 Q234 118 231 140" stroke="#d4a840" stroke-width="1" fill="none" opacity="0.5" stroke-linecap="round"/>
-          <path d="M160 110 Q155 135 158 158" stroke="#c4922a" stroke-width="1" fill="none" opacity="0.45" stroke-linecap="round"/>
-          <circle cx="198" cy="162" r="3" fill="#d4a840" opacity="0.8"/>
-          <circle cx="232" cy="142" r="2" fill="#d4a840" opacity="0.6"/>
-          <circle cx="157" cy="160" r="2.5" fill="#c4922a" opacity="0.55"/>
-          <ellipse cx="200" cy="340" rx="80" ry="30" fill="#110f0c" opacity="0.5"/>
-          <text x="200" y="385" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="11" fill="#7a7062" letter-spacing="3" font-style="italic">amethyst collection</text>
+      <div class="about-img short">
+        <svg viewBox="0 0 380 210" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="380" height="210" fill="#e0d8cc"/>
+          <ellipse cx="190" cy="105" rx="180" ry="110" fill="#b8906a" opacity="0.38"/>
+          <ellipse cx="260" cy="85" rx="120" ry="90" fill="#c4a882" opacity="0.35"/>
+          <path d="M110 60 Q170 105 162 172" stroke="#c4922a" stroke-width="1.6" fill="none" opacity="0.5" stroke-linecap="round"/>
+          <path d="M240 40 Q275 95 265 170" stroke="#8a6040" stroke-width="1" fill="none" opacity="0.32" stroke-linecap="round"/>
+          <circle cx="163" cy="170" r="4" fill="#c4922a" opacity="0.62"/>
         </svg>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- WORK GRID -->
-    <section class="section-work">
-      <div class="work-header">
-        <h2 class="work-title">Selected Works</h2>
-        <a href="#" class="work-view-all">View all →</a>
+  <!-- ── FEATURED COLLECTIONS ── -->
+  <section class="collections">
+    <div class="sec-head">
+      <h2>Featured Collections</h2>
+      <a href="#">View All Work →</a>
+    </div>
+
+    <!-- Row 1: 3 equal -->
+    <div class="coll-grid-top">
+
+      <a href="#" class="coll-item">
+        <div class="coll-thumb">
+          <svg viewBox="0 0 300 375" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="375" fill="#ddd8ea"/>
+            <ellipse cx="150" cy="185" rx="135" ry="165" fill="#8b6aaa" opacity="0.42"/>
+            <ellipse cx="175" cy="145" rx="105" ry="125" fill="#a07fc0" opacity="0.38"/>
+            <ellipse cx="115" cy="270" rx="85" ry="95" fill="#6b4e8a" opacity="0.32"/>
+            <path d="M130 55 Q160 125 152 210 Q144 290 162 355" stroke="#c4922a" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/>
+            <path d="M195 75 Q222 148 214 234" stroke="#c4922a" stroke-width="1.2" fill="none" opacity="0.38" stroke-linecap="round"/>
+            <circle cx="153" cy="208" r="7" fill="#c4922a" opacity="0.65"/>
+            <circle cx="213" cy="234" r="4" fill="#d4a840" opacity="0.55"/>
+          </svg>
+        </div>
+        <div class="coll-info">
+          <p class="coll-num">01</p>
+          <h3 class="coll-name">Amethyst Collection</h3>
+          <p class="coll-desc">Abstract pieces incorporating inks made from amethyst stones. Intricate layers of gold-foiled texture.</p>
+          <span class="coll-arrow">Explore →</span>
+        </div>
+      </a>
+
+      <a href="#" class="coll-item">
+        <div class="coll-thumb">
+          <svg viewBox="0 0 300 375" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="375" fill="#ede5d8"/>
+            <ellipse cx="150" cy="200" rx="140" ry="175" fill="#c4a882" opacity="0.5"/>
+            <ellipse cx="180" cy="158" rx="110" ry="130" fill="#b8906a" opacity="0.44"/>
+            <ellipse cx="110" cy="285" rx="92" ry="100" fill="#a87d5e" opacity="0.34"/>
+            <path d="M118 48 Q158 130 150 230 Q142 318 162 368" stroke="#c4922a" stroke-width="2.5" fill="none" opacity="0.5" stroke-linecap="round"/>
+            <circle cx="151" cy="228" r="7" fill="#c4922a" opacity="0.64"/>
+            <path d="M202 98 Q228 185 218 288" stroke="#8a6040" stroke-width="1.2" fill="none" opacity="0.32" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="coll-info">
+          <p class="coll-num">02</p>
+          <h3 class="coll-name">Cactus Flower Abstracts</h3>
+          <p class="coll-desc">Bold, desert-inspired abstracts with warm sienna and earth tones. Originals and prints available.</p>
+          <span class="coll-arrow">Explore →</span>
+        </div>
+      </a>
+
+      <a href="#" class="coll-item">
+        <div class="coll-thumb">
+          <svg viewBox="0 0 300 375" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="375" fill="#d8e4dc"/>
+            <ellipse cx="150" cy="200" rx="135" ry="172" fill="#6a9470" opacity="0.4"/>
+            <ellipse cx="172" cy="152" rx="105" ry="122" fill="#5a8464" opacity="0.35"/>
+            <ellipse cx="118" cy="298" rx="92" ry="82" fill="#7aaa80" opacity="0.3"/>
+            <path d="M128 58 Q165 142 157 244 Q149 325 168 368" stroke="#c4922a" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
+            <circle cx="158" cy="242" r="6" fill="#c4922a" opacity="0.62"/>
+            <path d="M202 90 Q225 175 218 268" stroke="#4a7454" stroke-width="1" fill="none" opacity="0.28" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="coll-info">
+          <p class="coll-num">03</p>
+          <h3 class="coll-name">Film Photography Prints</h3>
+          <p class="coll-desc">Single-edition film photographs. One of one — when they're gone, they're gone.</p>
+          <span class="coll-arrow">Explore →</span>
+        </div>
+      </a>
+
+    </div><!-- /coll-grid-top -->
+
+    <!-- Row 2: wide + two small -->
+    <div class="coll-grid-bot">
+
+      <a href="#" class="coll-item wide">
+        <div class="coll-thumb" style="aspect-ratio:1; min-width:180px; flex-shrink:0;">
+          <svg viewBox="0 0 220 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="220" fill="#f0e8e0"/>
+            <ellipse cx="110" cy="110" rx="105" ry="105" fill="#d4b898" opacity="0.4"/>
+            <ellipse cx="130" cy="90" rx="82" ry="82" fill="#c4a882" opacity="0.42"/>
+            <path d="M80 38 Q112 92 107 152 Q102 202 118 215" stroke="#c4922a" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
+            <path d="M142 48 Q168 115 160 180" stroke="#8a6040" stroke-width="1" fill="none" opacity="0.3" stroke-linecap="round"/>
+            <circle cx="108" cy="150" r="5" fill="#c4922a" opacity="0.65"/>
+          </svg>
+        </div>
+        <div class="coll-info" style="border-top:none; border-left:1px solid var(--border);">
+          <p class="coll-num">04</p>
+          <h3 class="coll-name" style="font-size:27px;">Wearable Art</h3>
+          <p class="coll-desc">Art you can carry with you. Hand-crafted wearable pieces. Modeled by real humans in real life.</p>
+          <span class="coll-arrow">Explore →</span>
+        </div>
+      </a>
+
+      <a href="#" class="coll-item">
+        <div class="coll-thumb" style="aspect-ratio:unset; min-height:200px; flex:1;">
+          <svg viewBox="0 0 280 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <rect width="280" height="260" fill="#e8e4f0"/>
+            <ellipse cx="140" cy="130" rx="125" ry="125" fill="#7a6aaa" opacity="0.3"/>
+            <ellipse cx="162" cy="108" rx="95" ry="95" fill="#9080c0" opacity="0.28"/>
+            <path d="M108 48 Q140 112 136 182 Q132 240 148 255" stroke="#c4922a" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
+            <circle cx="137" cy="180" r="5" fill="#c4922a" opacity="0.65"/>
+          </svg>
+        </div>
+        <div class="coll-info">
+          <p class="coll-num">05</p>
+          <h3 class="coll-name">Experiments</h3>
+          <p class="coll-desc">Playful explorations outside the main collections.</p>
+          <span class="coll-arrow">Explore →</span>
+        </div>
+      </a>
+
+      <a href="#" class="coll-item">
+        <div class="coll-thumb" style="aspect-ratio:unset; min-height:200px; flex:1;">
+          <svg viewBox="0 0 280 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <rect width="280" height="260" fill="#e0ecf0"/>
+            <ellipse cx="140" cy="130" rx="125" ry="125" fill="#6a9aaa" opacity="0.35"/>
+            <ellipse cx="158" cy="108" rx="94" ry="94" fill="#5a8a9a" opacity="0.3"/>
+            <path d="M110 48 Q142 112 138 182 Q134 238 150 255" stroke="#c4922a" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
+            <circle cx="139" cy="180" r="5" fill="#c4922a" opacity="0.65"/>
+          </svg>
+        </div>
+        <div class="coll-info">
+          <p class="coll-num">06</p>
+          <h3 class="coll-name">Art Mail Exchange</h3>
+          <p class="coll-desc">Made by hand, sent with care. Pay what you can.</p>
+          <span class="coll-arrow">Explore →</span>
+        </div>
+      </a>
+
+    </div><!-- /coll-grid-bot -->
+  </section>
+
+  <!-- ── REVIEWS ── -->
+  <section class="reviews">
+    <div class="sec-head">
+      <h2>Words from Collectors</h2>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review">
+        <span class="review-mark">&ldquo;</span>
+        <p class="review-body">A Gaussian blur of slowly becoming safely embodied. Their bold, beautifully textured paintings invite a deeper feeling into both the light and the darkness inherent in being human.</p>
+        <p class="review-attr">Collector, 2024</p>
       </div>
 
-      <div class="work-grid">
-
-        <!-- Item 1 — large landscape -->
-        <div class="work-item work-item-1">
-          <svg class="canvas-art" viewBox="0 0 700 530" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <rect width="700" height="530" fill="#1e1a17"/>
-            <ellipse cx="350" cy="265" rx="320" ry="280" fill="#3d2855" opacity="0.6"/>
-            <ellipse cx="500" cy="180" rx="200" ry="180" fill="#5e3d7a" opacity="0.5"/>
-            <ellipse cx="200" cy="380" rx="180" ry="160" fill="#8b4c2f" opacity="0.4"/>
-            <path d="M100 500 Q300 200 500 350 Q650 460 700 400 L700 530 L0 530Z" fill="#c4922a" opacity="0.08"/>
-            <path d="M280 80 Q360 120 340 200 Q320 280 380 340" stroke="#d4a840" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
-            <path d="M400 100 Q450 160 430 240" stroke="#f5f0e8" stroke-width="1" fill="none" opacity="0.25" stroke-linecap="round"/>
-            <circle cx="345" cy="195" r="6" fill="#d4a840" opacity="0.7"/>
-            <circle cx="430" cy="240" r="4" fill="#f5f0e8" opacity="0.35"/>
-            <circle cx="280" cy="320" r="5" fill="#6b4e8a" opacity="0.6"/>
-          </svg>
-          <div class="work-item-label">
-            <p class="item-series">Amethyst Collection</p>
-            <p class="item-title">Becoming No. 7</p>
-          </div>
-        </div>
-
-        <!-- Item 2 — tall portrait -->
-        <div class="work-item work-item-2">
-          <svg class="canvas-art" viewBox="0 0 400 530" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <rect width="400" height="530" fill="#1a1714"/>
-            <rect x="0" y="0" width="400" height="530" fill="#2a1e10" opacity="0.8"/>
-            <ellipse cx="200" cy="200" rx="180" ry="220" fill="#7a3520" opacity="0.5"/>
-            <ellipse cx="200" cy="350" rx="140" ry="140" fill="#c4922a" opacity="0.18"/>
-            <path d="M150 50 Q200 120 180 200 Q160 280 200 360 Q240 440 200 500" stroke="#d4a840" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
-            <path d="M100 150 Q160 200 140 280" stroke="#f5f0e8" stroke-width="1" fill="none" opacity="0.2" stroke-linecap="round"/>
-            <path d="M270 100 Q310 180 290 260" stroke="#c4922a" stroke-width="1.5" fill="none" opacity="0.4" stroke-linecap="round"/>
-            <circle cx="200" cy="200" r="8" fill="#d4a840" opacity="0.6"/>
-            <circle cx="145" cy="280" r="4" fill="#d4a840" opacity="0.5"/>
-            <circle cx="290" cy="255" r="3" fill="#c4922a" opacity="0.55"/>
-          </svg>
-          <div class="work-item-label">
-            <p class="item-series">Cactus Flower Abstracts</p>
-            <p class="item-title">Desert Gold</p>
-          </div>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="work-item work-item-3">
-          <svg class="canvas-art" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <rect width="400" height="400" fill="#14110d"/>
-            <ellipse cx="200" cy="200" rx="180" ry="180" fill="#1e3a2e" opacity="0.8"/>
-            <ellipse cx="220" cy="180" rx="130" ry="130" fill="#2d5c44" opacity="0.5"/>
-            <path d="M100 300 Q200 100 300 300" stroke="#d4a840" stroke-width="1.5" fill="none" opacity="0.45" stroke-linecap="round"/>
-            <circle cx="200" cy="160" r="7" fill="#d4a840" opacity="0.65"/>
-            <circle cx="140" cy="280" r="4" fill="#c4922a" opacity="0.5"/>
-            <circle cx="265" cy="275" r="3" fill="#f5f0e8" opacity="0.25"/>
-          </svg>
-          <div class="work-item-label">
-            <p class="item-series">Joshua Tree</p>
-            <p class="item-title">Root System</p>
-          </div>
-        </div>
-
-        <!-- Item 4 -->
-        <div class="work-item work-item-4">
-          <svg class="canvas-art" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <rect width="400" height="400" fill="#1a1420"/>
-            <ellipse cx="200" cy="200" rx="200" ry="200" fill="#2d1f45" opacity="0.9"/>
-            <ellipse cx="200" cy="180" rx="160" ry="150" fill="#4a2d6e" opacity="0.6"/>
-            <ellipse cx="220" cy="160" rx="100" ry="100" fill="#6b4e8a" opacity="0.5"/>
-            <path d="M120 300 Q200 150 280 300" stroke="#d4a840" stroke-width="2" fill="none" opacity="0.4" stroke-linecap="round"/>
-            <path d="M160 100 Q200 140 190 200" stroke="#c4922a" stroke-width="1" fill="none" opacity="0.5" stroke-linecap="round"/>
-            <circle cx="200" cy="155" r="9" fill="#d4a840" opacity="0.6"/>
-            <circle cx="180" cy="200" r="3.5" fill="#f5f0e8" opacity="0.3"/>
-          </svg>
-          <div class="work-item-label">
-            <p class="item-series">Amethyst Collection</p>
-            <p class="item-title">Depth, No. 3</p>
-          </div>
-        </div>
-
-        <!-- Item 5 -->
-        <div class="work-item work-item-5">
-          <svg class="canvas-art" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <rect width="400" height="400" fill="#1a1410"/>
-            <rect x="0" y="0" width="400" height="400" fill="#3d2010" opacity="0.5"/>
-            <ellipse cx="200" cy="200" rx="180" ry="180" fill="#7a3520" opacity="0.45"/>
-            <ellipse cx="230" cy="170" rx="120" ry="130" fill="#a04828" opacity="0.4"/>
-            <ellipse cx="180" cy="230" rx="80" ry="90" fill="#c4922a" opacity="0.25"/>
-            <path d="M140 100 Q200 160 180 260 Q160 340 200 380" stroke="#d4a840" stroke-width="1.5" fill="none" opacity="0.5" stroke-linecap="round"/>
-            <path d="M240 120 Q280 200 260 290" stroke="#f5f0e8" stroke-width="0.8" fill="none" opacity="0.2" stroke-linecap="round"/>
-            <circle cx="185" cy="180" r="5" fill="#d4a840" opacity="0.7"/>
-            <circle cx="258" cy="195" r="3" fill="#c4922a" opacity="0.55"/>
-          </svg>
-          <div class="work-item-label">
-            <p class="item-series">Experiments</p>
-            <p class="item-title">Sienna Study</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section class="section-words">
-      <div class="section-label">Words from Collectors</div>
-      <div class="words-grid">
-        <div class="word-card">
-          <div class="quote-mark">&ldquo;</div>
-          <blockquote>A Gaussian blur of slowly becoming safely embodied. Their bold, beautifully textured paintings invite a deeper feeling into both the light and the darkness inherent in being human.</blockquote>
-          <cite>Collector, 2024</cite>
-        </div>
-        <div class="word-card">
-          <div class="quote-mark">&ldquo;</div>
-          <blockquote>Abstract, yet so richly and peculiarly articulated through brave and expressive mark making. Kait's art carries you to your own emotional depths — a unique visual language that leads us to our own bravery.</blockquote>
-          <cite>Collector, 2024</cite>
-        </div>
-        <div class="word-card">
-          <div class="quote-mark">&ldquo;</div>
-          <blockquote>To be immersed in the work of Kait Mauro is to be immersed in the fragilities, strengths, and authenticity of the human spirit. When she shows herself in her work, we see ourselves.</blockquote>
-          <cite>Collector, 2023</cite>
-        </div>
-      </div>
-    </section>
-
-    <!-- SHOP CTA -->
-    <section class="section-shop">
-      <div class="shop-text">
-        <div class="section-label">The Studio Shop</div>
-        <h2 class="shop-heading">Take a piece<br>of the work<br><em>home with you</em></h2>
-        <p class="shop-desc">Originals, prints, film photographs, and wearable art — each piece carries the meditative energy of its making. Browse the full collection or reach out to discuss a commission.</p>
-        <div class="btn-group">
-          <a href="#" class="btn-primary">Shop Originals</a>
-          <a href="#" class="btn-ghost">Film Prints</a>
-        </div>
+      <div class="review">
+        <span class="review-mark">&ldquo;</span>
+        <p class="review-body">There's something about Kait's work that draws you in without asking anything of you. It's abstract, but it helps you feel your own depths, inviting curiosity and a gentler way of being human.</p>
+        <p class="review-attr">Collector, 2024</p>
       </div>
 
-      <div class="shop-visual">
-        <svg viewBox="0 0 520 480" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <rect width="520" height="480" fill="#1a1520"/>
-          <!-- Large canvas suggestion -->
-          <rect x="60" y="40" width="260" height="340" fill="#1e1a17" stroke="#3d3530" stroke-width="1"/>
-          <rect x="80" y="60" width="220" height="300" fill="#2a1f36" opacity="0.9"/>
-          <!-- Abstract art on canvas -->
-          <ellipse cx="190" cy="200" rx="90" ry="120" fill="#4a2d6e" opacity="0.7"/>
-          <ellipse cx="220" cy="170" rx="70" ry="90" fill="#6b4e8a" opacity="0.55"/>
-          <ellipse cx="170" cy="250" rx="55" ry="70" fill="#8b4c2f" opacity="0.4"/>
-          <path d="M150 100 Q190 140 185 200 Q180 260 195 310" stroke="#d4a840" stroke-width="2" fill="none" opacity="0.6" stroke-linecap="round"/>
-          <path d="M220 120 Q250 170 240 230" stroke="#c4922a" stroke-width="1.2" fill="none" opacity="0.45" stroke-linecap="round"/>
-          <circle cx="186" cy="198" r="6" fill="#d4a840" opacity="0.75"/>
-          <circle cx="240" cy="228" r="3.5" fill="#d4a840" opacity="0.55"/>
-          <!-- Second canvas, offset -->
-          <rect x="280" y="120" width="180" height="240" fill="#1e1a17" stroke="#3d3530" stroke-width="1"/>
-          <rect x="294" y="134" width="152" height="212" fill="#1a1410" opacity="0.9"/>
-          <ellipse cx="370" cy="240" rx="60" ry="80" fill="#7a3520" opacity="0.65"/>
-          <ellipse cx="390" cy="210" rx="45" ry="60" fill="#c4922a" opacity="0.3"/>
-          <path d="M350 150 Q380 200 370 270 Q360 320 375 360" stroke="#d4a840" stroke-width="1.5" fill="none" opacity="0.5" stroke-linecap="round"/>
-          <circle cx="370" cy="235" r="5" fill="#d4a840" opacity="0.65"/>
-          <!-- Floor shadow -->
-          <ellipse cx="220" cy="400" rx="180" ry="20" fill="#110f0c" opacity="0.7"/>
-          <ellipse cx="380" cy="370" rx="100" ry="14" fill="#110f0c" opacity="0.6"/>
-          <!-- Studio atmosphere dots -->
-          <circle cx="80" cy="350" r="2" fill="#d4a840" opacity="0.35"/>
-          <circle cx="460" cy="100" r="2.5" fill="#6b4e8a" opacity="0.4"/>
-          <circle cx="440" cy="400" r="1.5" fill="#c4922a" opacity="0.3"/>
-        </svg>
+      <div class="review">
+        <span class="review-mark">&ldquo;</span>
+        <p class="review-body">Kait's work carries a piece of their soul, raw and refined in equal measure. Through abstracted landscapes — shape, color, texture — they offer something that is felt as deeply as it is seen.</p>
+        <p class="review-attr">Collector, 2024</p>
       </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer>
-      <p>&copy; 2025 Kait Mauro — Studio</p>
-      <p>Birmingham, Alabama</p>
-    </footer>
+      <div class="review">
+        <span class="review-mark">&ldquo;</span>
+        <p class="review-body">I find myself reflected so eloquently back at myself within Kait's work. I see within them the parts of myself that feel messy and unknowable. It's there in the pathos of the painting — making me want to say, "There, see — that's me. Know me there."</p>
+        <p class="review-attr">Collector, 2023</p>
+      </div>
+    </div>
+  </section>
 
-  </main>
-</div>
+  <!-- ── BLOG ── -->
+  <section class="blog">
+    <div class="sec-head">
+      <h2>From the Blog</h2>
+      <a href="#">Read the Radically Self-Sharing Blog →</a>
+    </div>
+
+    <div class="blog-grid">
+      <a href="#" class="blog-card">
+        <div class="blog-thumb">
+          <svg viewBox="0 0 400 267" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="267" fill="#ede5d8"/>
+            <ellipse cx="200" cy="134" rx="185" ry="145" fill="#c4a882" opacity="0.4"/>
+            <ellipse cx="245" cy="100" rx="135" ry="115" fill="#b8906a" opacity="0.35"/>
+            <path d="M148 38 Q198 102 190 182 Q182 245 202 263" stroke="#c4922a" stroke-width="2" fill="none" opacity="0.45" stroke-linecap="round"/>
+            <circle cx="191" cy="180" r="5" fill="#c4922a" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="blog-body">
+          <p class="blog-tag">New Blog Era</p>
+          <h3 class="blog-title">On the blog / in your inbox if you're subscribed already</h3>
+          <p class="blog-excerpt">A new era, a new name. The work continues — radically honest, deeply personal, always in process.</p>
+          <span class="blog-cta">Read →</span>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card">
+        <div class="blog-thumb">
+          <svg viewBox="0 0 400 267" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="267" fill="#e4dcea"/>
+            <ellipse cx="200" cy="130" rx="185" ry="140" fill="#8b6aaa" opacity="0.35"/>
+            <ellipse cx="232" cy="100" rx="132" ry="112" fill="#a07fc0" opacity="0.3"/>
+            <path d="M150 40 Q198 102 194 178 Q190 242 206 263" stroke="#c4922a" stroke-width="2" fill="none" opacity="0.45" stroke-linecap="round"/>
+            <circle cx="195" cy="176" r="5" fill="#c4922a" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="blog-body">
+          <p class="blog-tag">Studio Practice · November 2024</p>
+          <h3 class="blog-title">Recommitting to My Studio Practice</h3>
+          <p class="blog-excerpt">I've been so frantically trying to learn about running an art business that I've been neglecting the studio itself.</p>
+          <span class="blog-cta">Read →</span>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card">
+        <div class="blog-thumb">
+          <svg viewBox="0 0 400 267" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="267" fill="#e0ecf0"/>
+            <ellipse cx="200" cy="135" rx="185" ry="142" fill="#6a9aaa" opacity="0.36"/>
+            <ellipse cx="232" cy="100" rx="132" ry="112" fill="#5a8a9a" opacity="0.3"/>
+            <path d="M153 40 Q200 108 194 182 Q188 246 204 264" stroke="#c4922a" stroke-width="2" fill="none" opacity="0.45" stroke-linecap="round"/>
+            <circle cx="195" cy="180" r="5" fill="#c4922a" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="blog-body">
+          <p class="blog-tag">Reflection · End of Year</p>
+          <h3 class="blog-title">In 2026, Rest is Holy</h3>
+          <p class="blog-excerpt">2025 was six months in Birmingham, two months in Gulf Shores, four months on the road. Lost everything. Kept going.</p>
+          <span class="blog-cta">Read →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── NEWSLETTER CTA ── -->
+  <section class="newsletter">
+    <div class="newsletter-text">
+      <p class="nl-label">Stay Connected</p>
+      <h2 class="nl-heading">Read the<br><em>radically</em><br>self-sharing blog</h2>
+      <p class="nl-desc">A newsletter on making art, healing, and staying honest. Stories from the studio, life on the road, and the practice of attention.</p>
+      <a href="#" class="nl-btn">Subscribe on Substack</a>
+    </div>
+
+    <div class="newsletter-img">
+      <svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="600" height="380" fill="#ede5d8"/>
+        <ellipse cx="300" cy="190" rx="285" ry="220" fill="#c4a882" opacity="0.42"/>
+        <ellipse cx="365" cy="152" rx="205" ry="182" fill="#b8906a" opacity="0.35"/>
+        <ellipse cx="218" cy="270" rx="165" ry="145" fill="#a87d5e" opacity="0.28"/>
+        <path d="M222 58 Q292 148 278 265 Q264 368 292 378" stroke="#c4922a" stroke-width="3" fill="none" opacity="0.45" stroke-linecap="round"/>
+        <path d="M375 78 Q422 172 408 292" stroke="#8a6040" stroke-width="1.5" fill="none" opacity="0.28" stroke-linecap="round"/>
+        <circle cx="279" cy="264" r="8" fill="#c4922a" opacity="0.62"/>
+        <circle cx="408" cy="290" r="5" fill="#d4a840" opacity="0.5"/>
+        <ellipse cx="148" cy="312" rx="82" ry="62" fill="#7a5a8a" opacity="0.08"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>&copy; 2026 Kait Mauro · Studio Kait</p>
+    <nav class="footer-nav">
+      <a href="#">Privacy</a>
+      <a href="#">Contact</a>
+      <a href="#">Instagram</a>
+      <a href="#">Substack</a>
+    </nav>
+  </footer>
+
+</main>
 
 <script>
-  // Subtle parallax on hero canvas
-  const heroCanvas = document.querySelector('.hero-canvas svg');
-  const main = document.querySelector('main');
-  main.addEventListener('scroll', () => {
-    const y = main.scrollTop;
-    if (heroCanvas && y < window.innerHeight) {
-      heroCanvas.style.transform = `translateY(${y * 0.25}px)`;
-    }
-  });
-
-  // Nav active state
-  document.querySelectorAll('nav ul li a').forEach(link => {
+  document.querySelectorAll('.sidebar-nav a').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-      document.querySelectorAll('nav ul li a').forEach(l => l.classList.remove('active'));
+      document.querySelectorAll('.sidebar-nav a').forEach(l => l.classList.remove('active'));
       link.classList.add('active');
     });
   });
 </script>
+
 </body>
 </html>
