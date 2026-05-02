@@ -299,20 +299,29 @@ body {
 .coll-row {
   display: grid;
   grid-template-columns: 220px 120px 1fr;
-  align-items: center;
+  align-items: stretch;
   border-bottom: 1px solid var(--border);
   min-height: 96px;
   text-decoration: none;
   color: inherit;
   background: var(--white);
-  transition: background 0.15s;
+  transition: background 0.28s ease;
+  overflow: hidden;
+  position: relative;
 }
 .coll-row:hover { background: var(--off); }
 
+/* Title cell */
 .coll-row-title {
   padding: 24px 32px 24px 48px;
   border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: padding-left 0.28s ease;
 }
+.coll-row:hover .coll-row-title { padding-left: 56px; }
+
 .coll-row-title h3 {
   font-family: 'EB Garamond', serif;
   font-size: 18px;
@@ -320,7 +329,10 @@ body {
   line-height: 1.3;
   color: var(--mid);
   margin-bottom: 4px;
+  transition: color 0.28s ease;
 }
+.coll-row:hover .coll-row-title h3 { color: #3a3632; }
+
 .coll-row-title .coll-status {
   font-size: 10px;
   letter-spacing: 0.14em;
@@ -328,15 +340,25 @@ body {
   color: var(--light);
 }
 
+/* Thumbnail cell — image zooms on hover */
 .coll-row-thumb {
   overflow: hidden;
-  height: 96px;
   border-right: 1px solid var(--border);
   background: var(--cream);
   flex-shrink: 0;
+  position: relative;
 }
-.coll-row-thumb svg { width: 100%; height: 100%; display: block; }
+.coll-row-thumb svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform: scale(1);
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: center center;
+}
+.coll-row:hover .coll-row-thumb svg { transform: scale(1.08); }
 
+/* Description cell */
 .coll-row-desc {
   padding: 24px 48px 24px 32px;
   display: flex;
@@ -349,19 +371,58 @@ body {
   line-height: 1.75;
   color: var(--mid);
   max-width: 420px;
+  transition: color 0.28s ease;
 }
+.coll-row:hover .coll-row-desc p { color: #3a3632; }
+
+/* Arrow slides right on hover */
 .coll-row-arrow {
-  font-size: 18px;
+  font-size: 20px;
   color: var(--light);
   flex-shrink: 0;
-  transition: color 0.15s, transform 0.15s;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.28s ease, transform 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.coll-row:hover .coll-row-arrow { color: var(--ink); transform: translateX(3px); }
+.coll-row:hover .coll-row-arrow {
+  color: #3a3632;
+  transform: translateX(6px);
+}
 
-/* ─────────────────────────────────
-   FEATURED HERO PIECE
-   Matches Cody's big image + "find the right course" section
-───────────────────────────────── */
+/* Animated left-edge accent line */
+.coll-row::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: #c4922a;
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.coll-row:hover::before { transform: scaleY(1); }
+
+/* Pill CTA inside collection rows (like "Join the Waitlist" in screenshot) */
+.coll-row-btn {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 7px 18px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.coll-row:hover .coll-row-btn {
+  border-color: #3a3632;
+  background: #3a3632;
+  color: #fff;
+  transform: translateY(-1px);
+}
 .featured {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -478,7 +539,7 @@ body {
   text-decoration: none;
   transition: color 0.15s;
 }
-.blog-header a:hover { color: var(--mid); }
+.blog-header a:hover { color: var(--ink); }
 
 /* Blog posts as clean rows — like Cody's offering list */
 .blog-row {
@@ -488,25 +549,54 @@ body {
   text-decoration: none;
   color: inherit;
   background: var(--white);
-  transition: background 0.15s;
+  transition: background 0.28s ease;
   min-height: 96px;
+  position: relative;
+  overflow: hidden;
 }
 .blog-row:hover { background: var(--off); }
 
+/* Animated left-edge accent line (same as collection rows) */
+.blog-row::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: #c4922a;
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.blog-row:hover::before { transform: scaleY(1); }
+
+/* Thumbnail — zooms on hover */
 .blog-row-thumb {
   overflow: hidden;
   height: 110px;
   background: var(--cream);
   border-right: 1px solid var(--border);
+  position: relative;
 }
-.blog-row-thumb svg { width: 100%; height: 100%; display: block; }
+.blog-row-thumb svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform: scale(1);
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: center center;
+}
+.blog-row:hover .blog-row-thumb svg { transform: scale(1.08); }
 
+/* Body — nudges right on hover */
 .blog-row-body {
   padding: 20px 48px 20px 28px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transition: padding-left 0.28s ease;
 }
+.blog-row:hover .blog-row-body { padding-left: 36px; }
+
 .blog-row-tag {
   font-size: 9.5px;
   letter-spacing: 0.16em;
@@ -521,7 +611,10 @@ body {
   line-height: 1.35;
   color: var(--mid);
   margin-bottom: 8px;
+  transition: color 0.28s ease;
 }
+.blog-row:hover .blog-row-title { color: #3a3632; }
+
 .blog-row-excerpt {
   font-size: 12.5px;
   line-height: 1.75;
@@ -714,7 +807,7 @@ footer p { font-size: 10.5px; color: var(--light); letter-spacing: 0.04em; }
       </div>
       <div class="coll-row-desc">
         <p>A series of desert-inspired abstract paintings with warm sienna and earth tones. Bold, layered, and richly textured — originals and a small run of prints.</p>
-        <span class="coll-row-arrow">→</span>
+        <span class="coll-row-btn">Shop Originals</span>
       </div>
     </a>
 
@@ -735,7 +828,7 @@ footer p { font-size: 10.5px; color: var(--light); letter-spacing: 0.04em; }
       </div>
       <div class="coll-row-desc">
         <p>Single-edition film photographs captured on analog cameras. One of one — when they're gone, they're gone. Moments of stillness, memory, and place.</p>
-        <span class="coll-row-arrow">→</span>
+        <span class="coll-row-btn">View Prints</span>
       </div>
     </a>
 
@@ -756,7 +849,7 @@ footer p { font-size: 10.5px; color: var(--light); letter-spacing: 0.04em; }
       </div>
       <div class="coll-row-desc">
         <p>Art you can carry with you. Hand-crafted wearable pieces modeled by real humans in real life. Handmade with care from the studio.</p>
-        <span class="coll-row-arrow">→</span>
+        <span class="coll-row-btn">Shop Goods</span>
       </div>
     </a>
 
@@ -778,7 +871,7 @@ footer p { font-size: 10.5px; color: var(--light); letter-spacing: 0.04em; }
       </div>
       <div class="coll-row-desc">
         <p>Abstract pieces incorporating inks made from amethyst stones — tilted slowly to create intricate layers of gold-foiled texture. Meditative and one-of-a-kind.</p>
-        <span class="coll-row-arrow">→</span>
+        <span class="coll-row-btn">View Collection</span>
       </div>
     </a>
 
@@ -799,7 +892,7 @@ footer p { font-size: 10.5px; color: var(--light); letter-spacing: 0.04em; }
       </div>
       <div class="coll-row-desc">
         <p>Made by hand, sent with care. Join the mailing list and you'll receive a small handmade art object sent to your door. Pay what you can.</p>
-        <span class="coll-row-arrow">→</span>
+        <span class="coll-row-btn">Join the Waitlist</span>
       </div>
     </a>
 
