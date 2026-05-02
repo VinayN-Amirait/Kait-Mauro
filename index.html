@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,1000 +5,1022 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Studio Kait | Art by Kait Mauro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ─────────────────────────────────
+   RESET & BASE
+───────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
-  --white: #ffffff;
-  --off-white: #faf9f7;
-  --cream: #f4f0e8;
+  --sidebar-w: 250px;
+  --white:  #ffffff;
+  --off:    #f9f8f6;
+  --cream:  #f2ede3;
   --border: #000000;
-  --text: #1c1a18;
-  --text-mid: #5a5650;
-  --text-light: #9a9690;
+  --ink:    #eed5fe;
+  --mid:    #6b6560;
+  --light:  #a8a39d;
   --accent: #b8622a;
-  --sidebar-w: 220px;
+  --yellow: #f5e6a3;
+  --lavender: #d8d4e8;
 }
 
-html { font-size: 16px; }
+html { font-size: 15px; }
+
 body {
-  font-family: 'Jost', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 300;
-  color: var(--text);
+  color: var(--ink);
   background: var(--white);
   display: flex;
   min-height: 100vh;
 }
 
-/* ──────────────────────────────────────
-   SIDEBAR
-────────────────────────────────────── */
+/* ─────────────────────────────────
+   SIDEBAR  (matches screenshot exactly)
+───────────────────────────────── */
 .sidebar {
   width: var(--sidebar-w);
   min-width: var(--sidebar-w);
   height: 100vh;
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   background: var(--white);
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  padding: 44px 0 36px;
-  z-index: 100;
+  padding: 32px 0 28px;
+  z-index: 200;
   overflow-y: auto;
 }
 
+/* logo / name mark at top */
 .sidebar-logo {
-  padding: 0 28px 36px;
-  margin-bottom: 28px;
+  padding: 0 20px 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 20px;
 }
 .sidebar-logo a { text-decoration: none; }
-.sidebar-logo .wordmark {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  color: var(--text);
-  line-height: 1.25;
-  display: block;
-}
-.sidebar-logo .sub {
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-light);
-  margin-top: 6px;
-  display: block;
-}
-
-.sidebar-nav { flex: 1; }
-.sidebar-nav ul { list-style: none; }
-
-.nav-group-label {
-  font-size: 9px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--text-light);
-  padding: 22px 28px 7px;
-  display: block;
-}
-
-.sidebar-nav ul li a {
-  display: block;
-  padding: 8px 28px;
-  font-size: 12.5px;
-  letter-spacing: 0.04em;
-  color: var(--text-mid);
-  text-decoration: none;
-  transition: color 0.15s;
-  position: relative;
-}
-.sidebar-nav ul li a:hover { color: var(--text); }
-.sidebar-nav ul li a.active { color: var(--text); font-weight: 400; }
-.sidebar-nav ul li a.active::before {
-  content: '';
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 4px;
+.sidebar-logo .mark {
+  width: 38px; height: 38px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--cream);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'EB Garamond', serif;
+  font-size: 15px;
+  color: var(--ink);
+  font-style: italic;
+  margin-bottom: 10px;
 }
+
+/* nav links — exactly as in screenshot: tiny, stacked, plain */
+.sidebar-nav { flex: 1; padding: 0 0 16px; }
+
+.nav-group { margin-bottom: 6px; }
+.nav-group-label {
+  display: block;
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--light);
+  padding: 14px 20px 4px;
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: 4px 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--mid);
+  text-decoration: none;
+  line-height: 1.5;
+  transition: color 0.15s;
+}
+.sidebar-nav a:hover { color: var(--ink); }
+.sidebar-nav a.active { color: var(--ink); font-weight: 400; }
 
 .sidebar-bottom {
-  padding: 24px 28px 0;
+  padding: 16px 20px 0;
   border-top: 1px solid var(--border);
-  margin-top: 12px;
+  font-size: 9.5px;
+  line-height: 1.8;
+  color: var(--light);
 }
 .sidebar-bottom a {
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--text-light);
-  text-decoration: none;
   display: block;
-  margin-bottom: 8px;
+  font-size: 10px;
+  color: var(--light);
+  text-decoration: none;
   transition: color 0.15s;
 }
-.sidebar-bottom a:hover { color: var(--text); }
+.sidebar-bottom a:hover { color: var(--ink); }
 
-/* ──────────────────────────────────────
-   MAIN LAYOUT
-────────────────────────────────────── */
-.main {
-  margin-left: var(--sidebar-w);
-  flex: 1;
-  min-height: 100vh;
+/* ─────────────────────────────────
+   MAIN WRAPPER
+───────────────────────────────── */
+.main { margin-left: var(--sidebar-w); flex: 1; }
+
+/* ─────────────────────────────────
+   DATELINE BAR (top of page, like screenshot)
+───────────────────────────────── */
+.dateline {
+  padding: 9px 48px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--light);
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
 }
 
-/* ──────────────────────────────────────
-   HERO
-────────────────────────────────────── */
+/* ─────────────────────────────────
+   HERO  —  image left, big text right
+   Matches: lavender block with portrait left,
+   large serif text right
+───────────────────────────────── */
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
+  min-height: 560px;
   border-bottom: 1px solid var(--border);
 }
 
-.hero-left {
-  padding: 72px 64px 72px 72px;
+.hero-image {
+  position: relative;
+  background: var(--lavender);
+  overflow: hidden;
+  min-height: 520px;
+}
+.hero-image svg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+}
+
+.hero-text {
+  padding: 56px 52px 52px 52px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-right: 1px solid var(--border);
+  background: var(--white);
+  border-left: 1px solid var(--border);
 }
 
-.hero-eyebrow {
+.hero-overline {
   font-size: 10px;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-light);
+  color: var(--light);
+  margin-bottom: 28px;
 }
 
-.hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(42px, 5vw, 70px);
+.hero-headline {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(30px, 3.4vw, 46px);
   font-weight: 400;
-  line-height: 1.06;
-  color: var(--text);
+  line-height: 1.35;
+  color: var(--ink);
+  flex: 1;
+  margin-bottom: 32px;
 }
-.hero-title em { font-style: italic; font-weight: 300; }
+.hero-headline em { font-style: italic; }
 
-.hero-foot {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.hero-desc {
-  font-size: 14px;
+.hero-body {
+  font-size: 13.5px;
   line-height: 1.9;
-  color: var(--text-mid);
-  max-width: 380px;
+  color: var(--mid);
+  max-width: 360px;
+  margin-bottom: 28px;
 }
 
-.hero-links { display: flex; gap: 20px; flex-wrap: wrap; }
-.hero-links a {
-  font-size: 11px;
-  letter-spacing: 0.10em;
+.btn-outline {
+  display: inline-block;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--text);
-  text-decoration: none;
+  color: var(--ink);
   border: 1px solid var(--border);
-  border-radius: 40px;
-  padding: 8px;
-  transition: border-color 0.15s, color 0.15s;
+  padding: 10px 22px;
+  text-decoration: none;
+  background: var(--white);
+  transition: border-color 0.15s, background 0.15s;
+  align-self: flex-start;
 }
-.hero-links a:hover { border-color: var(--accent); color: var(--accent); }
+.btn-outline:hover { border-color: var(--ink); background: var(--off); }
 
-.hero-right {
-  position: relative;
-  overflow: hidden;
-  background: var(--cream);
-  min-height: 560px;
-}
-.hero-right svg { width: 100%; height: 100%; display: block; position: absolute; inset: 0; }
-.hero-caption {
-  position: absolute;
-  bottom: 24px;
-  right: 24px;
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-mid);
-  background: rgba(255,255,255,0.88);
-  padding: 7px 14px;
-}
-
-/* ──────────────────────────────────────
-   ABOUT
-────────────────────────────────────── */
+/* ─────────────────────────────────
+   ABOUT  — text left / image right
+   Matches Cody's "expert of nothing" section
+───────────────────────────────── */
 .about {
   display: grid;
-  grid-template-columns: 3fr 2fr;
-  border-bottom: 1px solid var(--border);
-}
-
-.about-left {
-  padding: 80px 64px 80px 72px;
-  border-right: 1px solid var(--border);
-}
-
-.section-label {
-  font-size: 10px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--text-light);
-  margin-bottom: 32px;
-  display: block;
-}
-
-.about-heading {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(36px, 4vw, 54px);
-  font-weight: 400;
-  line-height: 1.1;
-  color: var(--text);
-  margin-bottom: 36px;
-}
-.about-heading em { font-style: italic; font-weight: 300; }
-
-.about-body {
-  font-size: 15px;
-  line-height: 1.95;
-  color: var(--text-mid);
-  max-width: 480px;
-}
-.about-body p + p { margin-top: 18px; }
-
-.text-link {
-  display: inline-block;
-  margin-top: 40px;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text);
-  text-decoration: none;
-  border: 1px solid var(--border);
-  border-radius: 40px;
-  padding: 8px;
-  transition: color 0.15s, border-color 0.15s;
-}
-.text-link:hover { color: var(--accent); border-color: var(--accent); }
-
-.about-right {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.about-img {
-  flex: 1;
-  overflow: hidden;
-  background: var(--cream);
-}
-.about-img + .about-img { border-top: 1px solid var(--border); }
-.about-img svg { width: 100%; height: 100%; display: block; }
-.about-img.tall { min-height: 340px; }
-.about-img.short { min-height: 180px; }
-
-/* ──────────────────────────────────────
-   SECTION HEADER SHARED
-────────────────────────────────────── */
-.sec-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 28px;
-  margin-bottom: 0;
-}
-.sec-head h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 34px;
-  font-weight: 400;
-  color: var(--text);
-}
-.sec-head a {
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-mid);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-.sec-head a:hover { color: var(--text); }
-
-/* ──────────────────────────────────────
-   COLLECTIONS
-────────────────────────────────────── */
-.collections {
-  padding: 80px 72px;
-  border-bottom: 1px solid var(--border);
-}
-
-/* Top 3 grid */
-.coll-grid-top {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border: 1px solid var(--border);
-  margin-top: 48px;
-}
-.coll-grid-top .coll-item { border-right: 1px solid var(--border); }
-.coll-grid-top .coll-item:last-child { border-right: none; }
-
-/* Bottom 3 grid */
-.coll-grid-bot {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  border: 1px solid var(--border);
-  border-top: none;
-}
-.coll-grid-bot .coll-item { border-right: 1px solid var(--border); }
-.coll-grid-bot .coll-item:last-child { border-right: none; }
-.coll-grid-bot .coll-item.wide { flex-direction: row; }
-.coll-grid-bot .coll-item.wide .coll-thumb { aspect-ratio: 1; min-width: 180px; flex-shrink: 0; }
-.coll-grid-bot .coll-item.wide .coll-info { border-top: none; border-left: 1px solid var(--border); }
-
-.coll-item {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: inherit;
-  background: var(--white);
-  transition: background 0.18s;
-}
-.coll-item:hover { background: var(--off-white); }
-
-.coll-thumb {
-  aspect-ratio: 4/5;
-  overflow: hidden;
-  background: var(--cream);
-  flex-shrink: 0;
-}
-.coll-thumb svg { width: 100%; height: 100%; display: block; }
-
-.coll-info {
-  padding: 24px 28px 32px;
-  border-top: 1px solid var(--border);
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.coll-num {
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-light);
-  margin-bottom: 10px;
-}
-.coll-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 23px;
-  font-weight: 400;
-  color: var(--text);
-  margin-bottom: 10px;
-  line-height: 1.2;
-}
-.coll-desc {
-  font-size: 13px;
-  line-height: 1.75;
-  color: var(--text-mid);
-  flex: 1;
-}
-.coll-arrow {
-  display: inline-block;
-  margin-top: 18px;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-light);
-  transition: color 0.15s;
-}
-.coll-item:hover .coll-arrow { color: var(--accent); }
-
-/* ──────────────────────────────────────
-   REVIEWS
-────────────────────────────────────── */
-.reviews {
-  background: var(--cream);
-  padding: 80px 72px;
-  border-bottom: 1px solid var(--border);
-}
-
-.reviews-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px 80px;
-  margin-top: 56px;
-}
-
-.review {
-  padding-top: 28px;
-  border-top: 1px solid #d8d4cc;
-}
-.review-mark {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 60px;
-  font-weight: 300;
-  line-height: 0.7;
-  color: #cdc8c0;
-  display: block;
-  margin-bottom: 16px;
-}
-.review-body {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  font-style: italic;
-  font-weight: 300;
-  line-height: 1.7;
-  color: var(--text);
-  margin-bottom: 20px;
-}
-.review-attr {
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--text-light);
-}
-
-/* ──────────────────────────────────────
-   BLOG
-────────────────────────────────────── */
-.blog {
-  padding: 80px 72px;
-  border-bottom: 1px solid var(--border);
-  background: var(--white);
-}
-
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border: 1px solid var(--border);
-  margin-top: 48px;
-}
-.blog-card {
-  text-decoration: none;
-  color: inherit;
-  border-right: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  background: var(--white);
-  transition: background 0.18s;
-}
-.blog-card:last-child { border-right: none; }
-.blog-card:hover { background: var(--off-white); }
-
-.blog-thumb {
-  aspect-ratio: 3/2;
-  background: var(--cream);
-  overflow: hidden;
-  flex-shrink: 0;
-}
-.blog-thumb svg { width: 100%; height: 100%; display: block; }
-
-.blog-body {
-  padding: 28px 32px 36px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  border-top: 1px solid var(--border);
-}
-.blog-tag {
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--text-light);
-  margin-bottom: 14px;
-}
-.blog-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 1.3;
-  color: var(--text);
-  margin-bottom: 14px;
-  flex: 1;
-}
-.blog-excerpt {
-  font-size: 13px;
-  line-height: 1.8;
-  color: var(--text-mid);
-  margin-bottom: 20px;
-}
-.blog-cta {
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-mid);
-  transition: color 0.15s;
-}
-.blog-card:hover .blog-cta { color: var(--accent); }
-
-/* ──────────────────────────────────────
-   NEWSLETTER CTA
-────────────────────────────────────── */
-.newsletter {
-  display: grid;
   grid-template-columns: 1fr 1fr;
   border-bottom: 1px solid var(--border);
-  min-height: 320px;
+  min-height: 440px;
 }
-.newsletter-text {
-  padding: 72px 64px 72px 72px;
+
+.about-text {
+  padding: 64px 52px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-right: 1px solid var(--border);
 }
-.nl-label {
+
+.section-eyebrow {
   font-size: 10px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--text-light);
-  margin-bottom: 20px;
-}
-.nl-heading {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(28px, 3vw, 44px);
-  font-weight: 400;
-  line-height: 1.15;
-  color: var(--text);
-  margin-bottom: 24px;
-}
-.nl-heading em { font-style: italic; font-weight: 300; }
-.nl-desc {
-  font-size: 14px;
-  line-height: 1.9;
-  color: var(--text-mid);
-  max-width: 360px;
-  margin-bottom: 36px;
-}
-.nl-btn {
-  display: inline-block;
-  font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--white);
-  background: var(--text);
-  padding: 14px 30px;
-  border: 1px solid var(--border);
-  border-radius: 40px;
-  text-decoration: none;
-  transition: background 0.18s;
-  align-self: flex-start;
+  color: var(--light);
+  margin-bottom: 20px;
 }
-.nl-btn:hover { background: var(--accent); }
 
-.newsletter-img {
+.about-heading {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+.about-heading em { font-style: italic; }
+
+.about-body {
+  font-size: 13.5px;
+  line-height: 1.95;
+  color: var(--mid);
+  max-width: 400px;
+}
+.about-body p + p { margin-top: 16px; }
+
+.about-image {
   background: var(--cream);
   overflow: hidden;
-  min-height: 320px;
   position: relative;
 }
-.newsletter-img svg { width: 100%; height: 100%; display: block; position: absolute; inset: 0; }
+.about-image svg {
+  width: 100%; height: 100%;
+  position: absolute; inset: 0;
+  display: block;
+}
 
-/* ──────────────────────────────────────
-   FOOTER
-────────────────────────────────────── */
-footer {
-  padding: 36px 72px;
+/* ─────────────────────────────────
+   COLLECTIONS  — list style like Cody's offerings
+   Each row: title left + small thumb + description right
+───────────────────────────────── */
+.collections {
+  border-bottom: 1px solid var(--border);
+}
+
+.collections-header {
+  padding: 40px 48px 28px;
+  border-bottom: 1px solid var(--border);
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
 }
-footer p { font-size: 11px; letter-spacing: 0.08em; color: var(--text-light); }
-.footer-nav { display: flex; gap: 24px; }
-.footer-nav a {
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--text-light);
+.collections-header h2 {
+  font-family: 'EB Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+}
+.collections-header a {
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mid);
   text-decoration: none;
   transition: color 0.15s;
 }
-.footer-nav a:hover { color: var(--text); }
+.collections-header a:hover { color: var(--ink); }
+
+/* Each collection row — exactly like Cody's course/offering rows */
+.coll-row {
+  display: grid;
+  grid-template-columns: 220px 120px 1fr;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  min-height: 96px;
+  text-decoration: none;
+  color: inherit;
+  background: var(--white);
+  transition: background 0.15s;
+}
+.coll-row:hover { background: var(--off); }
+
+.coll-row-title {
+  padding: 24px 32px 24px 48px;
+  border-right: 1px solid var(--border);
+}
+.coll-row-title h3 {
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.coll-row-title .coll-status {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--light);
+}
+
+.coll-row-thumb {
+  overflow: hidden;
+  height: 96px;
+  border-right: 1px solid var(--border);
+  background: var(--cream);
+  flex-shrink: 0;
+}
+.coll-row-thumb svg { width: 100%; height: 100%; display: block; }
+
+.coll-row-desc {
+  padding: 24px 48px 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.coll-row-desc p {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--mid);
+  max-width: 420px;
+}
+.coll-row-arrow {
+  font-size: 18px;
+  color: var(--light);
+  flex-shrink: 0;
+  transition: color 0.15s, transform 0.15s;
+}
+.coll-row:hover .coll-row-arrow { color: var(--ink); transform: translateX(3px); }
+
+/* ─────────────────────────────────
+   FEATURED HERO PIECE
+   Matches Cody's big image + "find the right course" section
+───────────────────────────────── */
+.featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+  min-height: 400px;
+}
+
+.featured-image {
+  background: var(--cream);
+  overflow: hidden;
+  position: relative;
+  min-height: 380px;
+}
+.featured-image svg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+}
+
+.featured-text {
+  padding: 60px 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid var(--border);
+}
+.featured-text h2 {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(26px, 2.8vw, 38px);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.featured-text h2 em { font-style: italic; }
+.featured-text p {
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: var(--mid);
+  margin-bottom: 16px;
+  max-width: 380px;
+}
+
+/* ─────────────────────────────────
+   REVIEWS  — card style like Cody's book quotes
+───────────────────────────────── */
+.reviews {
+  padding: 56px 48px 64px;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+}
+
+.reviews-header {
+  font-family: 'EB Garamond', serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--light);
+  margin-bottom: 36px;
+}
+
+.reviews-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.review-card {
+  border: 1px solid var(--border);
+  padding: 32px 36px;
+  background: var(--white);
+  max-width: 680px;
+}
+.review-card blockquote {
+  font-family: 'EB Garamond', serif;
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.review-card cite {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--light);
+  font-style: normal;
+}
+
+/* ─────────────────────────────────
+   BLOG  — text rows like Cody's list items
+───────────────────────────────── */
+.blog {
+  border-bottom: 1px solid var(--border);
+}
+
+.blog-header {
+  padding: 40px 48px 28px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.blog-header h2 {
+  font-family: 'EB Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+}
+.blog-header a {
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.blog-header a:hover { color: var(--ink); }
+
+/* Blog posts as clean rows — like Cody's offering list */
+.blog-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  background: var(--white);
+  transition: background 0.15s;
+  min-height: 96px;
+}
+.blog-row:hover { background: var(--off); }
+
+.blog-row-thumb {
+  overflow: hidden;
+  height: 110px;
+  background: var(--cream);
+  border-right: 1px solid var(--border);
+}
+.blog-row-thumb svg { width: 100%; height: 100%; display: block; }
+
+.blog-row-body {
+  padding: 20px 48px 20px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.blog-row-tag {
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--light);
+  margin-bottom: 6px;
+}
+.blog-row-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.blog-row-excerpt {
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: var(--mid);
+}
+
+/* ─────────────────────────────────
+   NEWSLETTER CTA  — Cody has a newsletter section with portrait
+───────────────────────────────── */
+.newsletter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+  min-height: 360px;
+}
+
+.newsletter-text {
+  padding: 64px 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid var(--border);
+}
+.newsletter-text h2 {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(24px, 2.6vw, 36px);
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 18px;
+}
+.newsletter-text h2 em { font-style: italic; }
+.newsletter-text p {
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: var(--mid);
+  max-width: 360px;
+  margin-bottom: 28px;
+}
+
+.newsletter-image {
+  background: var(--yellow);
+  overflow: hidden;
+  position: relative;
+  min-height: 340px;
+}
+.newsletter-image svg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+}
+
+/* ─────────────────────────────────
+   FOOTER
+───────────────────────────────── */
+footer {
+  padding: 28px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  background: var(--white);
+}
+footer p { font-size: 10.5px; color: var(--light); letter-spacing: 0.04em; }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a {
+  font-size: 10.5px;
+  color: var(--light);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-links a:hover { color: var(--ink); }
+
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════
-     SIDEBAR
-═══════════════════════════════════════ -->
+<!-- ═══════════ SIDEBAR ═══════════ -->
 <aside class="sidebar">
   <div class="sidebar-logo">
     <a href="#">
-      <span class="wordmark">Kait Mauro</span>
-      <span class="sub">Studio &amp; Art</span>
+      <div class="mark">K</div>
     </a>
   </div>
 
   <nav class="sidebar-nav">
-    <ul>
-      <li><a href="#" class="active">Home</a></li>
-      <li><a href="#">Art Mail</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-      <li><a href="#">Originals</a></li>
-      <li><a href="#">Photographs</a></li>
-      <li><a href="#">Art Prints</a></li>
-      <li><a href="#">Wearable Art</a></li>
-      <li><a href="#">Experiments</a></li>
-      <li><a href="#">Blog / Substack</a></li>
-    </ul>
+ 
+      <a href="#">Home</a>
+      <a href="#">Art Mail</a>
+
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+
+
+      <a href="#">Originals</a>
+      <a href="#">Photographs</a>
+      <a href="#">Art Prints</a>
+      <a href="#">Wearable Art</a>
+      <a href="#">Goods</a>
+ 
+
+      <a href="#">Blog</a>
+
+      <a href="#">Online Shop</a>
+      <a href="#">Cart (0)</a>
+
+
+    <div class="nav-group">
+      <span class="nav-group-label">Follow</span>
+      <a href="#">Instagram</a>
+      <a href="#">Substack</a>
+    </div>
   </nav>
 
   <div class="sidebar-bottom">
-    <a href="#">Instagram →</a>
-    <a href="#">Substack →</a>
-    <a href="#">Cart (0)</a>
+    Studio Kait<br>
+    Kait Mauro<br>
+    Abstract Painter<br>
+    &amp; Poetess<br>
+    Birmingham, AL
   </div>
 </aside>
 
-<!-- ═══════════════════════════════════════
-     MAIN
-═══════════════════════════════════════ -->
+<!-- ═══════════ MAIN ═══════════ -->
 <main class="main">
+
+  <!-- dateline bar like Cody's -->
+  <div class="dateline">Today is Saturday, May 2, 2026</div>
 
   <!-- ── HERO ── -->
   <section class="hero">
-    <div class="hero-left">
-      <p class="hero-eyebrow">Abstract Painter · Poet · Writer</p>
+    <!-- Portrait / painting image — lavender toned like Cody's hero -->
+    <div class="hero-image">
+      <svg viewBox="0 0 560 580" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="560" height="580" fill="#d8d4e8"/>
+        <!-- Soft amethyst wash — painterly portrait silhouette feel -->
+        <ellipse cx="280" cy="240" rx="180" ry="220" fill="#c0b8d8" opacity="0.6"/>
+        <ellipse cx="300" cy="180" rx="140" ry="160" fill="#b0a8cc" opacity="0.5"/>
+        <ellipse cx="240" cy="360" rx="160" ry="140" fill="#9890b8" opacity="0.4"/>
+        <!-- figure suggestion -->
+        <ellipse cx="285" cy="148" rx="62" ry="70" fill="#ccc4de" opacity="0.7"/>
+        <ellipse cx="282" cy="300" rx="100" ry="140" fill="#b8b0cc" opacity="0.5"/>
+        <!-- fabric/clothing texture -->
+        <path d="M200 260 Q250 290 280 340 Q310 380 340 350 Q370 320 360 280 Q340 240 300 230 Q260 220 220 250Z" fill="#a8a0be" opacity="0.45"/>
+        <!-- Gold ink marks (her signature medium) -->
+        <path d="M255 120 Q268 155 262 200 Q256 248 268 290" stroke="#c4922a" stroke-width="1.8" fill="none" opacity="0.55" stroke-linecap="round"/>
+        <path d="M305 130 Q318 162 314 205" stroke="#c4922a" stroke-width="1.2" fill="none" opacity="0.4" stroke-linecap="round"/>
+        <circle cx="263" cy="198" r="4" fill="#c4922a" opacity="0.65"/>
+        <circle cx="313" cy="205" r="2.5" fill="#d4a840" opacity="0.55"/>
+        <!-- botanical overlay suggestion -->
+        <ellipse cx="100" cy="480" rx="90" ry="80" fill="#bfb8d4" opacity="0.3"/>
+        <ellipse cx="460" cy="100" rx="80" ry="70" fill="#c8c0d8" opacity="0.3"/>
+        <!-- light wash top -->
+        <rect x="0" y="0" width="560" height="100" fill="url(#fadeTop)" opacity="0.2"/>
+        <defs>
+          <linearGradient id="fadeTop" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
 
-      <h1 class="hero-title">
-        Kait Mauro is<br>
-        an artist, writer,<br>
-        and <em>poet.</em><br>
-        Her work attends to<br>
-        memory, trace,<br>
-        and what persists.
+    <div class="hero-text">
+      <p class="hero-overline">Studio Kait · Abstract Painter · Poet · Writer</p>
+
+      <h1 class="hero-headline">
+        Kait Mauro is an artist, writer, and poet. They write a <em>radically self-sharing</em> blog and make abstract paintings that attend to memory, trace, and what persists.
       </h1>
 
-      <div class="hero-foot">
-        <p class="hero-desc">Bold, beautifully textured paintings that invite a deeper feeling into both the light and the darkness inherent in being human.</p>
-        <div class="hero-links">
-          <a href="#">Originals</a>
-          <a href="#">Prints</a>
-          <a href="#">Film Photographs</a>
-          <a href="#">Wearable Art</a>
-        </div>
-      </div>
-    </div>
+      <p class="hero-body">Bold, beautifully textured paintings that invite a deeper feeling into both the light and the darkness inherent in being human.</p>
 
-    <div class="hero-right">
-      <!-- Abstract painting art — warm ochres and amethyst, Kait's actual palette -->
-      <svg viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <rect width="600" height="800" fill="#ddd5c4"/>
-        <ellipse cx="320" cy="320" rx="270" ry="310" fill="#c4a882" opacity="0.5"/>
-        <ellipse cx="200" cy="480" rx="210" ry="250" fill="#b8906a" opacity="0.4"/>
-        <ellipse cx="430" cy="180" rx="190" ry="170" fill="#cdbba0" opacity="0.45"/>
-        <ellipse cx="300" cy="660" rx="230" ry="170" fill="#a87d5e" opacity="0.28"/>
-        <ellipse cx="450" cy="560" rx="150" ry="140" fill="#7a5a8a" opacity="0.1"/>
-        <path d="M230 120 Q290 210 275 370 Q260 510 310 620" stroke="#8a6040" stroke-width="2.5" fill="none" opacity="0.3" stroke-linecap="round"/>
-        <path d="M370 90 Q430 190 410 360 Q390 500 440 590" stroke="#7a5035" stroke-width="1.5" fill="none" opacity="0.22" stroke-linecap="round"/>
-        <path d="M170 410 Q230 450 220 540" stroke="#9a7055" stroke-width="1.5" fill="none" opacity="0.28" stroke-linecap="round"/>
-        <!-- gold ink drips — the signature of the Amethyst Collection -->
-        <path d="M290 190 Q315 260 305 360 Q295 450 315 540" stroke="#c4922a" stroke-width="2" fill="none" opacity="0.58" stroke-linecap="round"/>
-        <path d="M370 270 Q395 340 385 430" stroke="#c4922a" stroke-width="1.2" fill="none" opacity="0.45" stroke-linecap="round"/>
-        <circle cx="307" cy="358" r="5.5" fill="#c4922a" opacity="0.7"/>
-        <circle cx="384" cy="430" r="3.5" fill="#c4922a" opacity="0.58"/>
-        <circle cx="220" cy="542" r="4" fill="#b8802a" opacity="0.5"/>
-        <circle cx="312" cy="540" r="3" fill="#d4a840" opacity="0.55"/>
-        <!-- light blush -->
-        <ellipse cx="140" cy="200" rx="85" ry="110" fill="#ece5d8" opacity="0.32"/>
-      </svg>
-      <span class="hero-caption">Amethyst Collection</span>
+      <a href="#" class="btn-outline">Shop Now</a>
     </div>
   </section>
 
-  <!-- ── ABOUT ── -->
-  <section class="about">
-    <div class="about-left">
-      <span class="section-label">The Artist</span>
-      <h2 class="about-heading">A radically<br><em>self-sharing</em><br>creator.</h2>
-      <div class="about-body">
-        <p>I write when there are words to express what I need to say, and use the visual language I've constructed for myself when there are not.</p>
-        <p>I'm an abstract painter, a radically self-sharing writer, and a hot mess poetess in Birmingham, Alabama. I live with my five dogs, a hoarder-level collection of houseplants, piles of books, and way too many art supplies.</p>
-        <p>My current exploration is the Amethyst Collection — abstract pieces incorporating inks made from amethyst stones. I love the meditative quality of making these pieces, tilting the paper slowly and disturbing the inks to create intricate layers of gold-foiled texture.</p>
-        <p>My artistic practices play a significant role in my healing from complex PTSD. I am my favorite version of myself when working on one of my creative projects.</p>
-      </div>
-      <a href="#" class="text-link">Read More About Kait →</a>
-    </div>
-
-    <div class="about-right">
-      <div class="about-img tall">
-        <svg viewBox="0 0 380 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <rect width="380" height="420" fill="#e8e0d4"/>
-          <ellipse cx="190" cy="200" rx="160" ry="200" fill="#c4a882" opacity="0.55"/>
-          <ellipse cx="220" cy="160" rx="120" ry="140" fill="#b8906a" opacity="0.48"/>
-          <ellipse cx="155" cy="290" rx="95" ry="110" fill="#a87d5e" opacity="0.38"/>
-          <path d="M165 70 Q195 150 185 250 Q175 340 195 400" stroke="#c4922a" stroke-width="2.2" fill="none" opacity="0.55" stroke-linecap="round"/>
-          <circle cx="186" cy="248" r="6" fill="#c4922a" opacity="0.68"/>
-          <circle cx="196" cy="400" r="4" fill="#b8802a" opacity="0.5"/>
-          <ellipse cx="265" cy="330" rx="65" ry="55" fill="#7a5a8a" opacity="0.1"/>
-          <path d="M240 100 Q265 170 255 260" stroke="#8a6040" stroke-width="1.2" fill="none" opacity="0.28" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="about-img short">
-        <svg viewBox="0 0 380 210" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <rect width="380" height="210" fill="#e0d8cc"/>
-          <ellipse cx="190" cy="105" rx="180" ry="110" fill="#b8906a" opacity="0.38"/>
-          <ellipse cx="260" cy="85" rx="120" ry="90" fill="#c4a882" opacity="0.35"/>
-          <path d="M110 60 Q170 105 162 172" stroke="#c4922a" stroke-width="1.6" fill="none" opacity="0.5" stroke-linecap="round"/>
-          <path d="M240 40 Q275 95 265 170" stroke="#8a6040" stroke-width="1" fill="none" opacity="0.32" stroke-linecap="round"/>
-          <circle cx="163" cy="170" r="4" fill="#c4922a" opacity="0.62"/>
-        </svg>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── FEATURED COLLECTIONS ── -->
+  <!-- ── FEATURED COLLECTIONS (list-row style) ── -->
   <section class="collections">
-    <div class="sec-head">
+    <div class="collections-header">
       <h2>Featured Collections</h2>
-      <a href="#">View All Work →</a>
+      <a href="#">View All →</a>
     </div>
 
-    <!-- Row 1: 3 equal -->
-    <div class="coll-grid-top">
+    <!-- Row 1 -->
+    <a href="#" class="coll-row">
+      <div class="coll-row-title">
+        <h3>Cactus Flower Abstracts</h3>
+        <span class="coll-status">Originals Available</span>
+      </div>
+      <div class="coll-row-thumb">
+        <svg viewBox="0 0 120 96" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="96" fill="#ede5d8"/>
+          <ellipse cx="60" cy="48" rx="55" ry="50" fill="#c4a882" opacity="0.55"/>
+          <ellipse cx="72" cy="36" rx="42" ry="44" fill="#b8906a" opacity="0.5"/>
+          <path d="M48 14 Q62 42 58 74 Q54 90 62 94" stroke="#c4922a" stroke-width="1.8" fill="none" opacity="0.55" stroke-linecap="round"/>
+          <circle cx="59" cy="72" r="3.5" fill="#c4922a" opacity="0.65"/>
+        </svg>
+      </div>
+      <div class="coll-row-desc">
+        <p>A series of desert-inspired abstract paintings with warm sienna and earth tones. Bold, layered, and richly textured — originals and a small run of prints.</p>
+        <span class="coll-row-arrow">→</span>
+      </div>
+    </a>
 
-      <a href="#" class="coll-item">
-        <div class="coll-thumb">
-          <svg viewBox="0 0 300 375" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <rect width="300" height="375" fill="#ddd8ea"/>
-            <ellipse cx="150" cy="185" rx="135" ry="165" fill="#8b6aaa" opacity="0.42"/>
-            <ellipse cx="175" cy="145" rx="105" ry="125" fill="#a07fc0" opacity="0.38"/>
-            <ellipse cx="115" cy="270" rx="85" ry="95" fill="#6b4e8a" opacity="0.32"/>
-            <path d="M130 55 Q160 125 152 210 Q144 290 162 355" stroke="#c4922a" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/>
-            <path d="M195 75 Q222 148 214 234" stroke="#c4922a" stroke-width="1.2" fill="none" opacity="0.38" stroke-linecap="round"/>
-            <circle cx="153" cy="208" r="7" fill="#c4922a" opacity="0.65"/>
-            <circle cx="213" cy="234" r="4" fill="#d4a840" opacity="0.55"/>
-          </svg>
-        </div>
-        <div class="coll-info">
-          <p class="coll-num">01</p>
-          <h3 class="coll-name">Amethyst Collection</h3>
-          <p class="coll-desc">Abstract pieces incorporating inks made from amethyst stones. Intricate layers of gold-foiled texture.</p>
-          <span class="coll-arrow">Explore →</span>
-        </div>
-      </a>
+    <!-- Row 2 -->
+    <a href="#" class="coll-row">
+      <div class="coll-row-title">
+        <h3>Film Camera Prints</h3>
+        <span class="coll-status">Single-Edition</span>
+      </div>
+      <div class="coll-row-thumb">
+        <svg viewBox="0 0 120 96" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="96" fill="#e0ecf0"/>
+          <ellipse cx="60" cy="48" rx="55" ry="50" fill="#6a9aaa" opacity="0.45"/>
+          <ellipse cx="70" cy="36" rx="42" ry="40" fill="#5a8a9a" opacity="0.4"/>
+          <path d="M46 14 Q60 42 56 74 Q52 90 60 94" stroke="#c4922a" stroke-width="1.8" fill="none" opacity="0.5" stroke-linecap="round"/>
+          <circle cx="57" cy="72" r="3.5" fill="#c4922a" opacity="0.65"/>
+        </svg>
+      </div>
+      <div class="coll-row-desc">
+        <p>Single-edition film photographs captured on analog cameras. One of one — when they're gone, they're gone. Moments of stillness, memory, and place.</p>
+        <span class="coll-row-arrow">→</span>
+      </div>
+    </a>
 
-      <a href="#" class="coll-item">
-        <div class="coll-thumb">
-          <svg viewBox="0 0 300 375" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <rect width="300" height="375" fill="#ede5d8"/>
-            <ellipse cx="150" cy="200" rx="140" ry="175" fill="#c4a882" opacity="0.5"/>
-            <ellipse cx="180" cy="158" rx="110" ry="130" fill="#b8906a" opacity="0.44"/>
-            <ellipse cx="110" cy="285" rx="92" ry="100" fill="#a87d5e" opacity="0.34"/>
-            <path d="M118 48 Q158 130 150 230 Q142 318 162 368" stroke="#c4922a" stroke-width="2.5" fill="none" opacity="0.5" stroke-linecap="round"/>
-            <circle cx="151" cy="228" r="7" fill="#c4922a" opacity="0.64"/>
-            <path d="M202 98 Q228 185 218 288" stroke="#8a6040" stroke-width="1.2" fill="none" opacity="0.32" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="coll-info">
-          <p class="coll-num">02</p>
-          <h3 class="coll-name">Cactus Flower Abstracts</h3>
-          <p class="coll-desc">Bold, desert-inspired abstracts with warm sienna and earth tones. Originals and prints available.</p>
-          <span class="coll-arrow">Explore →</span>
-        </div>
-      </a>
+    <!-- Row 3 -->
+    <a href="#" class="coll-row">
+      <div class="coll-row-title">
+        <h3>Wearable Art</h3>
+        <span class="coll-status">Ongoing</span>
+      </div>
+      <div class="coll-row-thumb">
+        <svg viewBox="0 0 120 96" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="96" fill="#f0e8e0"/>
+          <ellipse cx="60" cy="48" rx="55" ry="50" fill="#d4b898" opacity="0.45"/>
+          <ellipse cx="68" cy="36" rx="42" ry="40" fill="#c4a882" opacity="0.45"/>
+          <path d="M46 16 Q60 44 56 76" stroke="#c4922a" stroke-width="1.8" fill="none" opacity="0.5" stroke-linecap="round"/>
+          <circle cx="57" cy="74" r="3.5" fill="#c4922a" opacity="0.65"/>
+        </svg>
+      </div>
+      <div class="coll-row-desc">
+        <p>Art you can carry with you. Hand-crafted wearable pieces modeled by real humans in real life. Handmade with care from the studio.</p>
+        <span class="coll-row-arrow">→</span>
+      </div>
+    </a>
 
-      <a href="#" class="coll-item">
-        <div class="coll-thumb">
-          <svg viewBox="0 0 300 375" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <rect width="300" height="375" fill="#d8e4dc"/>
-            <ellipse cx="150" cy="200" rx="135" ry="172" fill="#6a9470" opacity="0.4"/>
-            <ellipse cx="172" cy="152" rx="105" ry="122" fill="#5a8464" opacity="0.35"/>
-            <ellipse cx="118" cy="298" rx="92" ry="82" fill="#7aaa80" opacity="0.3"/>
-            <path d="M128 58 Q165 142 157 244 Q149 325 168 368" stroke="#c4922a" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
-            <circle cx="158" cy="242" r="6" fill="#c4922a" opacity="0.62"/>
-            <path d="M202 90 Q225 175 218 268" stroke="#4a7454" stroke-width="1" fill="none" opacity="0.28" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="coll-info">
-          <p class="coll-num">03</p>
-          <h3 class="coll-name">Film Photography Prints</h3>
-          <p class="coll-desc">Single-edition film photographs. One of one — when they're gone, they're gone.</p>
-          <span class="coll-arrow">Explore →</span>
-        </div>
-      </a>
+    <!-- Row 4 -->
+    <a href="#" class="coll-row">
+      <div class="coll-row-title">
+        <h3>Amethyst Collection</h3>
+        <span class="coll-status">Ongoing</span>
+      </div>
+      <div class="coll-row-thumb">
+        <svg viewBox="0 0 120 96" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="96" fill="#ddd8ea"/>
+          <ellipse cx="60" cy="48" rx="55" ry="50" fill="#8b6aaa" opacity="0.42"/>
+          <ellipse cx="70" cy="36" rx="42" ry="40" fill="#a07fc0" opacity="0.38"/>
+          <path d="M46 14 Q60 42 58 74 Q55 90 62 94" stroke="#c4922a" stroke-width="1.8" fill="none" opacity="0.55" stroke-linecap="round"/>
+          <circle cx="59" cy="72" r="3.5" fill="#c4922a" opacity="0.68"/>
+          <circle cx="75" cy="50" r="2" fill="#d4a840" opacity="0.55"/>
+        </svg>
+      </div>
+      <div class="coll-row-desc">
+        <p>Abstract pieces incorporating inks made from amethyst stones — tilted slowly to create intricate layers of gold-foiled texture. Meditative and one-of-a-kind.</p>
+        <span class="coll-row-arrow">→</span>
+      </div>
+    </a>
 
-    </div><!-- /coll-grid-top -->
+    <!-- Row 5 -->
+    <a href="#" class="coll-row">
+      <div class="coll-row-title">
+        <h3>Art Mail Exchange</h3>
+        <span class="coll-status">Pay What You Can</span>
+      </div>
+      <div class="coll-row-thumb">
+        <svg viewBox="0 0 120 96" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="96" fill="#d8e4dc"/>
+          <ellipse cx="60" cy="48" rx="55" ry="50" fill="#6a9470" opacity="0.4"/>
+          <ellipse cx="68" cy="36" rx="40" ry="38" fill="#5a8464" opacity="0.38"/>
+          <path d="M46 16 Q60 44 57 76" stroke="#c4922a" stroke-width="1.8" fill="none" opacity="0.5" stroke-linecap="round"/>
+          <circle cx="58" cy="74" r="3.5" fill="#c4922a" opacity="0.62"/>
+        </svg>
+      </div>
+      <div class="coll-row-desc">
+        <p>Made by hand, sent with care. Join the mailing list and you'll receive a small handmade art object sent to your door. Pay what you can.</p>
+        <span class="coll-row-arrow">→</span>
+      </div>
+    </a>
 
-    <!-- Row 2: wide + two small -->
-    <div class="coll-grid-bot">
+  </section>
 
-      <a href="#" class="coll-item wide">
-        <div class="coll-thumb" style="aspect-ratio:1; min-width:180px; flex-shrink:0;">
-          <svg viewBox="0 0 220 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <rect width="220" height="220" fill="#f0e8e0"/>
-            <ellipse cx="110" cy="110" rx="105" ry="105" fill="#d4b898" opacity="0.4"/>
-            <ellipse cx="130" cy="90" rx="82" ry="82" fill="#c4a882" opacity="0.42"/>
-            <path d="M80 38 Q112 92 107 152 Q102 202 118 215" stroke="#c4922a" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
-            <path d="M142 48 Q168 115 160 180" stroke="#8a6040" stroke-width="1" fill="none" opacity="0.3" stroke-linecap="round"/>
-            <circle cx="108" cy="150" r="5" fill="#c4922a" opacity="0.65"/>
-          </svg>
-        </div>
-        <div class="coll-info" style="border-top:none; border-left:1px solid var(--border);">
-          <p class="coll-num">04</p>
-          <h3 class="coll-name" style="font-size:27px;">Wearable Art</h3>
-          <p class="coll-desc">Art you can carry with you. Hand-crafted wearable pieces. Modeled by real humans in real life.</p>
-          <span class="coll-arrow">Explore →</span>
-        </div>
-      </a>
+  <!-- ── FEATURED PAINTING + ABOUT  ── -->
+  <section class="featured">
+    <div class="featured-image">
+      <svg viewBox="0 0 560 480" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="560" height="480" fill="#e8e4f0"/>
+        <!-- Forest/outdoor scene feel — like Cody's outdoor portrait -->
+        <rect x="0" y="280" width="560" height="200" fill="#c8d4b8" opacity="0.5"/>
+        <rect x="0" y="240" width="560" height="60" fill="#d8e4c8" opacity="0.35"/>
+        <!-- Sky -->
+        <rect x="0" y="0" width="560" height="280" fill="#e0dced" opacity="0.9"/>
+        <!-- Trees suggestion -->
+        <ellipse cx="80" cy="200" rx="55" ry="120" fill="#8a9e78" opacity="0.35"/>
+        <ellipse cx="160" cy="180" rx="48" ry="110" fill="#7a9068" opacity="0.3"/>
+        <ellipse cx="460" cy="190" rx="52" ry="115" fill="#8a9e78" opacity="0.35"/>
+        <ellipse cx="520" cy="210" rx="45" ry="100" fill="#7a9068" opacity="0.28"/>
+        <!-- Figure suggestion -->
+        <ellipse cx="280" cy="260" rx="38" ry="90" fill="#b8a888" opacity="0.5"/>
+        <ellipse cx="280" cy="178" rx="28" ry="32" fill="#c8b898" opacity="0.6"/>
+        <!-- Gold marks -->
+        <path d="M268 150 Q274 175 271 210 Q268 240 274 265" stroke="#c4922a" stroke-width="1.5" fill="none" opacity="0.5" stroke-linecap="round"/>
+        <circle cx="271" cy="208" r="3" fill="#c4922a" opacity="0.6"/>
+      </svg>
+    </div>
 
-      <a href="#" class="coll-item">
-        <div class="coll-thumb" style="aspect-ratio:unset; min-height:200px; flex:1;">
-          <svg viewBox="0 0 280 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <rect width="280" height="260" fill="#e8e4f0"/>
-            <ellipse cx="140" cy="130" rx="125" ry="125" fill="#7a6aaa" opacity="0.3"/>
-            <ellipse cx="162" cy="108" rx="95" ry="95" fill="#9080c0" opacity="0.28"/>
-            <path d="M108 48 Q140 112 136 182 Q132 240 148 255" stroke="#c4922a" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
-            <circle cx="137" cy="180" r="5" fill="#c4922a" opacity="0.65"/>
-          </svg>
-        </div>
-        <div class="coll-info">
-          <p class="coll-num">05</p>
-          <h3 class="coll-name">Experiments</h3>
-          <p class="coll-desc">Playful explorations outside the main collections.</p>
-          <span class="coll-arrow">Explore →</span>
-        </div>
-      </a>
-
-      <a href="#" class="coll-item">
-        <div class="coll-thumb" style="aspect-ratio:unset; min-height:200px; flex:1;">
-          <svg viewBox="0 0 280 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <rect width="280" height="260" fill="#e0ecf0"/>
-            <ellipse cx="140" cy="130" rx="125" ry="125" fill="#6a9aaa" opacity="0.35"/>
-            <ellipse cx="158" cy="108" rx="94" ry="94" fill="#5a8a9a" opacity="0.3"/>
-            <path d="M110 48 Q142 112 138 182 Q134 238 150 255" stroke="#c4922a" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
-            <circle cx="139" cy="180" r="5" fill="#c4922a" opacity="0.65"/>
-          </svg>
-        </div>
-        <div class="coll-info">
-          <p class="coll-num">06</p>
-          <h3 class="coll-name">Art Mail Exchange</h3>
-          <p class="coll-desc">Made by hand, sent with care. Pay what you can.</p>
-          <span class="coll-arrow">Explore →</span>
-        </div>
-      </a>
-
-    </div><!-- /coll-grid-bot -->
+    <div class="featured-text">
+      <p class="section-eyebrow">The Artist</p>
+      <h2>An expert of <em>nothing</em>, a devotee to the mystery</h2>
+      <p>I write when there are words to express what I need to say, and use the visual language I've constructed for myself when there are not.</p>
+      <p>I'm an abstract painter, a radically self-sharing writer, and a hot mess poetess living in Birmingham, Alabama — surrounded by five dogs, a hoarder-level collection of houseplants, piles of books, and way too many art supplies.</p>
+      <br>
+      <a href="#" class="btn-outline">About Me</a>
+    </div>
   </section>
 
   <!-- ── REVIEWS ── -->
   <section class="reviews">
-    <div class="sec-head">
-      <h2>Words from Collectors</h2>
+    <p class="reviews-header">Words from Collectors</p>
+
+    <div class="reviews-cards">
+      <div class="review-card">
+        <blockquote>"When our attention splinters, so do we. It is not an exaggeration to say this work will save your life. It saved mine." — Kait's art is that kind of presence.</blockquote>
+        <cite>Collector, 2024</cite>
+      </div>
+
+      <div class="review-card">
+        <blockquote>"A Gaussian blur of slowly becoming safely embodied. Their bold, beautifully textured paintings invite a deeper feeling into both the light and the darkness inherent in being human."</blockquote>
+        <cite>Collector, 2024</cite>
+      </div>
+
+      <div class="review-card">
+        <blockquote>"There's something about Kait's work that draws you in without asking anything of you. It's abstract, but it helps you feel your own depths — inviting curiosity and a gentler way of being human."</blockquote>
+        <cite>Collector, 2024</cite>
+      </div>
+
+      <div class="review-card">
+        <blockquote>"Kait's work carries a piece of their soul, raw and refined in equal measure. Through abstracted landscapes — shape, color, texture — they offer something that is felt as deeply as it is seen."</blockquote>
+        <cite>Collector, 2023</cite>
+      </div>
+
+      <div class="review-card">
+        <blockquote>"I find myself reflected so eloquently back at myself within Kait's work. I see within them the parts of myself that feel messy and unknowable by anyone. It's there in the pathos of the painting."</blockquote>
+        <cite>Collector, 2023</cite>
+      </div>
     </div>
+  </section>
 
-    <div class="reviews-grid">
-      <div class="review">
-        <span class="review-mark">&ldquo;</span>
-        <p class="review-body">A Gaussian blur of slowly becoming safely embodied. Their bold, beautifully textured paintings invite a deeper feeling into both the light and the darkness inherent in being human.</p>
-        <p class="review-attr">Collector, 2024</p>
+  <!-- ── ABOUT (second, image right) ── -->
+  <section class="about">
+    <div class="about-text">
+      <p class="section-eyebrow">Studio Practice</p>
+      <h2 class="about-heading">Amethyst Collection<br><em>— currently unfolding</em></h2>
+      <div class="about-body">
+        <p>I make paint my way to slow down and work with my body. After many years of always working digitally, the studio practice is my anchor — a slowing-down place bound to me, honest, and lived with.</p>
+        <p>The Amethyst Collection incorporates inks made from real amethyst stones. I tilt the paper slowly to disturb the inks and create intricate, gold-foiled layers. Each piece is meditative, one-of-a-kind, and deeply personal.</p>
       </div>
-
-      <div class="review">
-        <span class="review-mark">&ldquo;</span>
-        <p class="review-body">There's something about Kait's work that draws you in without asking anything of you. It's abstract, but it helps you feel your own depths, inviting curiosity and a gentler way of being human.</p>
-        <p class="review-attr">Collector, 2024</p>
-      </div>
-
-      <div class="review">
-        <span class="review-mark">&ldquo;</span>
-        <p class="review-body">Kait's work carries a piece of their soul, raw and refined in equal measure. Through abstracted landscapes — shape, color, texture — they offer something that is felt as deeply as it is seen.</p>
-        <p class="review-attr">Collector, 2024</p>
-      </div>
-
-      <div class="review">
-        <span class="review-mark">&ldquo;</span>
-        <p class="review-body">I find myself reflected so eloquently back at myself within Kait's work. I see within them the parts of myself that feel messy and unknowable. It's there in the pathos of the painting — making me want to say, "There, see — that's me. Know me there."</p>
-        <p class="review-attr">Collector, 2023</p>
-      </div>
+      <br>
+      <a href="#" class="btn-outline">View Originals</a>
+    </div>
+    <div class="about-image">
+      <svg viewBox="0 0 520 460" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="520" height="460" fill="#e4dcea"/>
+        <ellipse cx="260" cy="220" rx="230" ry="240" fill="#8b6aaa" opacity="0.38"/>
+        <ellipse cx="300" cy="175" rx="185" ry="200" fill="#a07fc0" opacity="0.32"/>
+        <ellipse cx="200" cy="320" rx="165" ry="160" fill="#6b4e8a" opacity="0.25"/>
+        <path d="M220 55 Q262 140 250 250 Q238 345 262 435" stroke="#c4922a" stroke-width="2.5" fill="none" opacity="0.52" stroke-linecap="round"/>
+        <path d="M300 80 Q335 168 325 268" stroke="#c4922a" stroke-width="1.2" fill="none" opacity="0.38" stroke-linecap="round"/>
+        <circle cx="251" cy="248" r="6" fill="#c4922a" opacity="0.65"/>
+        <circle cx="325" cy="268" r="3.5" fill="#d4a840" opacity="0.55"/>
+        <ellipse cx="140" cy="380" rx="70" ry="55" fill="#d4c8e0" opacity="0.35"/>
+      </svg>
     </div>
   </section>
 
   <!-- ── BLOG ── -->
   <section class="blog">
-    <div class="sec-head">
+    <div class="blog-header">
       <h2>From the Blog</h2>
-      <a href="#">Read the Radically Self-Sharing Blog →</a>
+      <a href="#">Read the radically self-sharing blog →</a>
     </div>
 
-    <div class="blog-grid">
-      <a href="#" class="blog-card">
-        <div class="blog-thumb">
-          <svg viewBox="0 0 400 267" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <rect width="400" height="267" fill="#ede5d8"/>
-            <ellipse cx="200" cy="134" rx="185" ry="145" fill="#c4a882" opacity="0.4"/>
-            <ellipse cx="245" cy="100" rx="135" ry="115" fill="#b8906a" opacity="0.35"/>
-            <path d="M148 38 Q198 102 190 182 Q182 245 202 263" stroke="#c4922a" stroke-width="2" fill="none" opacity="0.45" stroke-linecap="round"/>
-            <circle cx="191" cy="180" r="5" fill="#c4922a" opacity="0.6"/>
-          </svg>
-        </div>
-        <div class="blog-body">
-          <p class="blog-tag">New Blog Era</p>
-          <h3 class="blog-title">On the blog / in your inbox if you're subscribed already</h3>
-          <p class="blog-excerpt">A new era, a new name. The work continues — radically honest, deeply personal, always in process.</p>
-          <span class="blog-cta">Read →</span>
-        </div>
-      </a>
+    <a href="#" class="blog-row">
+      <div class="blog-row-thumb">
+        <svg viewBox="0 0 120 110" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="110" fill="#ede5d8"/>
+          <ellipse cx="60" cy="55" rx="58" ry="58" fill="#c4a882" opacity="0.45"/>
+          <ellipse cx="70" cy="42" rx="45" ry="48" fill="#b8906a" opacity="0.4"/>
+          <path d="M48 16 Q62 48 58 82 Q54 104 62 108" stroke="#c4922a" stroke-width="1.8" fill="none" opacity="0.5" stroke-linecap="round"/>
+          <circle cx="59" cy="80" r="3.5" fill="#c4922a" opacity="0.65"/>
+        </svg>
+      </div>
+      <div class="blog-row-body">
+        <p class="blog-row-tag">New Blog Name for a New Era</p>
+        <h3 class="blog-row-title">On the blog / in your inbox if you're subscribed already</h3>
+        <p class="blog-row-excerpt">A new era, a new name. The work continues — radically honest, deeply personal, and always in process.</p>
+      </div>
+    </a>
 
-      <a href="#" class="blog-card">
-        <div class="blog-thumb">
-          <svg viewBox="0 0 400 267" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <rect width="400" height="267" fill="#e4dcea"/>
-            <ellipse cx="200" cy="130" rx="185" ry="140" fill="#8b6aaa" opacity="0.35"/>
-            <ellipse cx="232" cy="100" rx="132" ry="112" fill="#a07fc0" opacity="0.3"/>
-            <path d="M150 40 Q198 102 194 178 Q190 242 206 263" stroke="#c4922a" stroke-width="2" fill="none" opacity="0.45" stroke-linecap="round"/>
-            <circle cx="195" cy="176" r="5" fill="#c4922a" opacity="0.6"/>
-          </svg>
-        </div>
-        <div class="blog-body">
-          <p class="blog-tag">Studio Practice · November 2024</p>
-          <h3 class="blog-title">Recommitting to My Studio Practice</h3>
-          <p class="blog-excerpt">I've been so frantically trying to learn about running an art business that I've been neglecting the studio itself.</p>
-          <span class="blog-cta">Read →</span>
-        </div>
-      </a>
+    <a href="#" class="blog-row">
+      <div class="blog-row-thumb">
+        <svg viewBox="0 0 120 110" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="110" fill="#e4dcea"/>
+          <ellipse cx="60" cy="55" rx="58" ry="58" fill="#8b6aaa" opacity="0.4"/>
+          <ellipse cx="68" cy="42" rx="44" ry="46" fill="#a07fc0" opacity="0.35"/>
+          <path d="M48 16 Q62 48 58 82" stroke="#c4922a" stroke-width="1.8" fill="none" opacity="0.5" stroke-linecap="round"/>
+          <circle cx="59" cy="80" r="3.5" fill="#c4922a" opacity="0.65"/>
+        </svg>
+      </div>
+      <div class="blog-row-body">
+        <p class="blog-row-tag">Starting Again in Another New Place</p>
+        <h3 class="blog-row-title">Nesting in in Michigan, grateful to be an indoor cat</h3>
+        <p class="blog-row-excerpt">Still kicking. A new chapter, a new state, and the same honest commitment to showing up.</p>
+      </div>
+    </a>
 
-      <a href="#" class="blog-card">
-        <div class="blog-thumb">
-          <svg viewBox="0 0 400 267" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <rect width="400" height="267" fill="#e0ecf0"/>
-            <ellipse cx="200" cy="135" rx="185" ry="142" fill="#6a9aaa" opacity="0.36"/>
-            <ellipse cx="232" cy="100" rx="132" ry="112" fill="#5a8a9a" opacity="0.3"/>
-            <path d="M153 40 Q200 108 194 182 Q188 246 204 264" stroke="#c4922a" stroke-width="2" fill="none" opacity="0.45" stroke-linecap="round"/>
-            <circle cx="195" cy="180" r="5" fill="#c4922a" opacity="0.6"/>
-          </svg>
-        </div>
-        <div class="blog-body">
-          <p class="blog-tag">Reflection · End of Year</p>
-          <h3 class="blog-title">In 2026, Rest is Holy</h3>
-          <p class="blog-excerpt">2025 was six months in Birmingham, two months in Gulf Shores, four months on the road. Lost everything. Kept going.</p>
-          <span class="blog-cta">Read →</span>
-        </div>
-      </a>
-    </div>
+    <a href="#" class="blog-row">
+      <div class="blog-row-thumb">
+        <svg viewBox="0 0 120 110" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="110" fill="#e0ecf0"/>
+          <ellipse cx="60" cy="55" rx="58" ry="58" fill="#6a9aaa" opacity="0.4"/>
+          <ellipse cx="68" cy="42" rx="44" ry="46" fill="#5a8a9a" opacity="0.35"/>
+          <path d="M48 16 Q62 48 58 82" stroke="#c4922a" stroke-width="1.8" fill="none" opacity="0.5" stroke-linecap="round"/>
+          <circle cx="59" cy="80" r="3.5" fill="#c4922a" opacity="0.65"/>
+        </svg>
+      </div>
+      <div class="blog-row-body">
+        <p class="blog-row-tag">End of Year Reflection · 2025</p>
+        <h3 class="blog-row-title">In 2026, rest is holy</h3>
+        <p class="blog-row-excerpt">2022 got sober. 2023 left. 2024 fell. 2025 lost everything, kept going, was on the run. In 2026, rest is holy.</p>
+      </div>
+    </a>
+
+    <a href="#" class="blog-row">
+      <div class="blog-row-thumb">
+        <svg viewBox="0 0 120 110" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="110" fill="#f0e8e0"/>
+          <ellipse cx="60" cy="55" rx="58" ry="58" fill="#d4b898" opacity="0.45"/>
+          <ellipse cx="68" cy="42" rx="44" ry="46" fill="#c4a882" opacity="0.4"/>
+          <path d="M48 16 Q62 48 58 82" stroke="#c4922a" stroke-width="1.8" fill="none" opacity="0.5" stroke-linecap="round"/>
+          <circle cx="59" cy="80" r="3.5" fill="#c4922a" opacity="0.65"/>
+        </svg>
+      </div>
+      <div class="blog-row-body">
+        <p class="blog-row-tag">Studio Practice · 2025</p>
+        <h3 class="blog-row-title">Three painting series, still unfolding</h3>
+        <p class="blog-row-excerpt">Originals available. A small run of prints. Single-edition film photographs. An art mail exchange made by hand, sent with care.</p>
+      </div>
+    </a>
+
   </section>
 
-  <!-- ── NEWSLETTER CTA ── -->
+  <!-- ── NEWSLETTER CTA (yellow toned like Cody's) ── -->
   <section class="newsletter">
     <div class="newsletter-text">
-      <p class="nl-label">Stay Connected</p>
-      <h2 class="nl-heading">Read the<br><em>radically</em><br>self-sharing blog</h2>
-      <p class="nl-desc">A newsletter on making art, healing, and staying honest. Stories from the studio, life on the road, and the practice of attention.</p>
-      <a href="#" class="nl-btn">Subscribe on Substack</a>
+      <p class="section-eyebrow">Stay Connected</p>
+      <h2>Read the <em>radically self-sharing</em> blog</h2>
+      <p>A newsletter on making art, healing, and staying honest. Stories from the studio, life on the road, and the practice of paying attention to what matters.</p>
+      <a href="#" class="btn-outline">Subscribe on Substack</a>
     </div>
 
-    <div class="newsletter-img">
-      <svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <rect width="600" height="380" fill="#ede5d8"/>
-        <ellipse cx="300" cy="190" rx="285" ry="220" fill="#c4a882" opacity="0.42"/>
-        <ellipse cx="365" cy="152" rx="205" ry="182" fill="#b8906a" opacity="0.35"/>
-        <ellipse cx="218" cy="270" rx="165" ry="145" fill="#a87d5e" opacity="0.28"/>
-        <path d="M222 58 Q292 148 278 265 Q264 368 292 378" stroke="#c4922a" stroke-width="3" fill="none" opacity="0.45" stroke-linecap="round"/>
-        <path d="M375 78 Q422 172 408 292" stroke="#8a6040" stroke-width="1.5" fill="none" opacity="0.28" stroke-linecap="round"/>
-        <circle cx="279" cy="264" r="8" fill="#c4922a" opacity="0.62"/>
-        <circle cx="408" cy="290" r="5" fill="#d4a840" opacity="0.5"/>
-        <ellipse cx="148" cy="312" rx="82" ry="62" fill="#7a5a8a" opacity="0.08"/>
+    <div class="newsletter-image">
+      <!-- Yellow-toned figure, like Cody's warm portrait section -->
+      <svg viewBox="0 0 540 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="540" height="400" fill="#f5e6a3"/>
+        <!-- Warm outdoor feeling -->
+        <rect x="0" y="240" width="540" height="160" fill="#e8d888" opacity="0.5"/>
+        <rect x="0" y="180" width="540" height="80" fill="#eedd99" opacity="0.4"/>
+        <!-- Sky -->
+        <rect x="0" y="0" width="540" height="220" fill="#f8f0c0" opacity="0.6"/>
+        <!-- Figure -->
+        <ellipse cx="270" cy="260" rx="50" ry="110" fill="#d4a860" opacity="0.45"/>
+        <ellipse cx="270" cy="160" rx="35" ry="40" fill="#ddb870" opacity="0.55"/>
+        <!-- Painting/mark marks -->
+        <path d="M258 130 Q265 158 262 198 Q259 235 266 260" stroke="#c4922a" stroke-width="1.5" fill="none" opacity="0.6" stroke-linecap="round"/>
+        <circle cx="263" cy="196" r="3.5" fill="#c4922a" opacity="0.65"/>
+        <!-- warm haze -->
+        <ellipse cx="130" cy="330" rx="100" ry="70" fill="#e8d060" opacity="0.2"/>
+        <ellipse cx="430" cy="80" rx="90" ry="70" fill="#f0e090" opacity="0.3"/>
       </svg>
     </div>
   </section>
 
   <!-- ── FOOTER ── -->
   <footer>
-    <p>&copy; 2026 Kait Mauro · Studio Kait</p>
-    <nav class="footer-nav">
+    <p>© 2026 Studio Kait · Kait Mauro</p>
+    <div class="footer-links">
       <a href="#">Privacy</a>
       <a href="#">Contact</a>
       <a href="#">Instagram</a>
       <a href="#">Substack</a>
-    </nav>
+    </div>
   </footer>
 
 </main>
@@ -1013,6 +1034,5 @@ footer p { font-size: 11px; letter-spacing: 0.08em; color: var(--text-light); }
     });
   });
 </script>
-
 </body>
 </html>
