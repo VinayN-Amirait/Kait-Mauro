@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -120,7 +121,12 @@ body {
 /* ─────────────────────────────────
    MAIN WRAPPER
 ───────────────────────────────── */
-.main { margin-left: var(--sidebar-w); flex: 1; }
+.main {
+  margin-left: var(--sidebar-w);
+  width: calc(100% - var(--sidebar-w));
+  max-width: 100%;
+  min-width: 0;
+}
 
 /* ─────────────────────────────────
    DATELINE BAR (top of page, like screenshot)
@@ -765,6 +771,181 @@ footer p { font-size: 10.5px; color: var(--light); letter-spacing: 0.04em; }
   transition: color 0.15s;
 }
 .footer-links a:hover { color: var(--ink); }
+
+/* Responsive layout fixes */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.main {
+  min-width: 0;
+  max-width: calc(100vw - var(--sidebar-w));
+}
+
+svg,
+img {
+  max-width: 100%;
+}
+
+@media (max-width: 900px) {
+  body {
+    display: block;
+  }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+    padding: 22px 20px 18px;
+  }
+
+  .sidebar-logo,
+  .sidebar-bottom,
+  .nav-group-label,
+  .sidebar-nav a {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .main {
+    margin-left: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .dateline,
+  .collections-header,
+  .blog-header,
+  .reviews,
+  footer {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .hero,
+  .about,
+  .featured,
+  .newsletter {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-text,
+  .featured-text {
+    border-left: 0;
+  }
+
+  .about-text,
+  .newsletter-text {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-text,
+  .about-text,
+  .featured-text,
+  .newsletter-text {
+    padding: 42px 22px;
+  }
+
+  .hero,
+  .hero-image,
+  .about,
+  .featured,
+  .featured-image,
+  .newsletter,
+  .newsletter-image {
+    min-height: 0;
+  }
+
+  .hero-image,
+  .about-image,
+  .featured-image,
+  .newsletter-image {
+    min-height: 320px;
+  }
+
+  .collections-header,
+  .blog-header,
+  footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .coll-row {
+    grid-template-columns: 96px 1fr;
+  }
+
+  .coll-row-title {
+    grid-column: 1 / -1;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+    padding: 20px 22px;
+  }
+
+  .coll-row:hover .coll-row-title,
+  .blog-row:hover .blog-row-body {
+    padding-left: 22px;
+  }
+
+  .coll-row-thumb {
+    min-height: 110px;
+  }
+
+  .coll-row-desc {
+    padding: 20px 22px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .blog-row {
+    grid-template-columns: 96px 1fr;
+  }
+
+  .blog-row-body {
+    padding: 18px 22px;
+    min-width: 0;
+  }
+
+  .review-card {
+    padding: 24px 22px;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 560px) {
+  .coll-row,
+  .blog-row {
+    display: block;
+  }
+
+  .coll-row-thumb,
+  .blog-row-thumb {
+    height: 150px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .marquee-section::before,
+  .marquee-section::after {
+    width: 40px;
+  }
+
+  .marquee-item {
+    width: 190px;
+    height: 210px;
+  }
+}
 
 </style>
 </head>
